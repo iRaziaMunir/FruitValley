@@ -5,7 +5,7 @@ import Carousel from './Carousel';
 const Header = () => {
   return (
     <div>
-      <div className='main-hero-container w-full pt-[100px] relative'>
+      <div className='main-hero-container w-full pt-[100px] pb-[50px] relative'>
         <img className=' w-full h-[550px] object-cover brightness-25' src="../images/hero-img.jpg" alt="Hero image" />
         <div className="hero-sub-container w-full h-[550px] p-60  flex justify-center items-center absolute top-[100px]">
           <div  className='hero-left-container  w-[784px] h-[341px] pl-10'>

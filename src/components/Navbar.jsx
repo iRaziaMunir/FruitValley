@@ -9,15 +9,15 @@ import { RxCross2 } from "react-icons/rx";
 const Navbar = () => {
   return (
     <>
-        <div className='w-full h-[100px] bg-[#fff] flex shadow fixed z-40 ' >
-            <nav className='w-full flex justify-center items-center gap-x-60 '>
+        <div className='w-full h-[100px] bg-[#fff] flex shadow-md fixed z-40 ' >
+            <nav className='w-full flex justify-between items-center px-40 md:px-60'>
                 <NavLink 
                 // style={(e)=>{
                 //     return{color:e.isActive ? 'green' : '',};
                 // }} 
-                to='./'><h1 className='text-4xl font-bold text-lime-500'>FruitValley</h1>
+                to='./'><h1 className=' logo text-4xl md:text-2xl sm:text-xl font-bold text-lime-500'>FruitValley</h1>
                 </NavLink>
-                <div className='text-zinc-400 text-lg flex gap-10'>
+                <div className='text-zinc-400 text-lg flex gap-10 '>
                 <NavLink style={(e)=>{
                         return{color: e.isActive ? '#81c408': '', fontWeight: e.isActive ? 'bold' : '',};
                     }} to="/">
@@ -66,7 +66,7 @@ const Navbar = () => {
                     }} to='/cart'className='text-lime-500 text-2xl mt-2 '><FaShoppingBag/></NavLink>
                     <NavLink style={(e)=>{
                         return{color: e.isActive ? "#81c408" : "", fontWeight: e.isActive ? 'bold' : '',};
-                    }} to='/user' className='text-lime-500 text-2xl mt-2 '><FaUser/></NavLink>
+                    }} to='/user' className='user-icon text-lime-500 text-2xl mt-2 '><FaUser/></NavLink>
                 </div>
             </nav>
         </div>

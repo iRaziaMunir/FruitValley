@@ -5,6 +5,10 @@ import { MdOutlineSecurity } from "react-icons/md";
 import { FaArrowRightArrowLeft } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa6";
 import ProductListing from './ProductListing';
+import ServiceItems from './ServiceItems';
+import FreshOrganicVegetables from './FreshOrganicVegetables';
+import Banner from './Banner';
+import Testimonials from './Testimonials';
 
 const featuresData =[
   {icon:<FaCarSide className='text-5xl text-[#fff]'/>, name:'Free Shipping', description:'Free on order over $300'},
@@ -17,10 +21,10 @@ const Home = () => {
   return (
     <>
     {/*----------Features section------- */}
-    <div className='w-full h-[450px] flex flex-wrap items-center px-32 py-20'>
+    <div className='w-full flex flex-wrap justify-center items-center px-40 md:px-0 sm:px-0 py-5 '>
     {featuresData.map((item, index)=>(
-      <div className='w-[300px] h-[300px]  flex justify-around items-center ml-20'>
-      <div className="[w-250px] h-[250px] bg-[#f2f4f6] rounded px-10 py-10 flex  relative">
+      <div className='w-[300px] h-[300px] flex justify-evenly items-center'>
+      <div className=" bg-[#f2f4f6] rounded p-10 flex relative">
         <div className=" w-[100px] h-[100px] bg-[#ffb524] py-5 rounded-[50%]  mt-[-40px] flex justify-center items-center absolute top-14 right-[100px]">
           {item.icon}
         </div>
@@ -33,6 +37,11 @@ const Home = () => {
     ))}
     </div>
     <ProductListing />
+    {/*-------------- services section------------------ */}
+      <ServiceItems />
+      <FreshOrganicVegetables />
+      <Banner />
+      <Testimonials />
     </>
   )
 }
