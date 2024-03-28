@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Product from "./Product";
-import { useFilterContext } from "../context/Filter_Context";
+import { useFilterContext } from "../context/filter_context";
 
 const MainProductsList = () => {
 	const { filter_products } = useFilterContext();
