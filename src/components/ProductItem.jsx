@@ -9,7 +9,7 @@ const ProductItem = ({item}) => {
     {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ productId: item.id })
+      body: JSON.stringify({ productId: item.id, quantity: 1 })
     };
 
     fetch('http://localhost:3000/cart', payload)

@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import { MdDelete } from "react-icons/md";
 const Cart = () => {
+  const [items, setItems] = useState([]);
+
+	useEffect(() => {
+		fetch("http://localhost:3000/cart?_embed=product")
+		.then((response) => response.json())
+		.then((data) => setItems(data))
+		.catch((error) => { console.error("Error fetching data:", error); });
+	}, []);
+
+  const shippingCharges = 4.99;
+  const subTotal = items.reduce((total, item) => total + (item.quantity * item.product.price), 0);
+
   return (
     <div className=" py-12 my-20  p-40">
       <div className=' '>
@@ -16,46 +28,18 @@ const Cart = () => {
           </tr>
           </thead>
           <tbody>
-          <tr className='border-b border-slate-100'>
-            <td  className='py-5'>
-            <img className='w-20 h-20 rounded-full' src="./images/fruite-item-1.jpg" alt="" />
-            </td>
-            <td >Orange</td>
-            <td>1$</td>
-            <td>1</td>
-            <td>Total</td>
-            <td className='text-2xl text-red-500'><button><MdDelete className='ml-10'/></button></td>
-          </tr>
-          <tr className='border-b border-slate-100'>
-            <td  className='py-5'>
-            <img className='w-20 h-20 rounded-full' src="./images/fruite-item-1.jpg" alt="" />
-            </td>
-            <td>Orange</td>
-            <td>1$</td>
-            <td>1</td>
-            <td>Total</td>
-            <td className='text-2xl text-red-500'><button><MdDelete className='ml-10'/></button></td>
-          </tr>
-          <tr className='border-b border-slate-100'>
-            <td  className='py-5'>
-            <img className='w-20 h-20 rounded-full' src="./images/fruite-item-1.jpg" alt="" />
-            </td>
-            <td>Orange</td>
-            <td>1$</td>
-            <td>1</td>
-            <td>Total</td>
-            <td className='text-2xl text-red-500'><button><MdDelete className='ml-10'/></button></td>
-          </tr>
-          <tr className='border-b border-slate-100'>
-            <td  className='py-5'>
-            <img className='w-20 h-20 rounded-full' src="./images/fruite-item-1.jpg" alt="" />
-            </td>
-            <td>Orange</td>
-            <td>1$</td>
-            <td>1</td>
-            <td>Total</td>
-            <td className='text-2xl text-red-500'><button><MdDelete className='ml-10'/></button></td>
-          </tr>
+            {items.map((item, index) => (
+              <tr className='border-b border-slate-100' key={item.id}>
+                <td className='py-5'>
+                  <img className='w-20 h-20 rounded-full' src={"../images/" + item.product.image} alt={item.product.name} />
+                </td>
+                <td>{item.product.name}</td>
+                <td>{'$' + item.product.price}</td>
+                <td>{item.quantity}</td>
+                <td>{'$' + item.product.price * item.quantity}</td>
+                <td className='text-2xl text-red-500'><button><MdDelete className='ml-10'/></button></td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -66,17 +50,17 @@ const Cart = () => {
         </div>
         <div class="mb-2 flex justify-between">
           <p class="text-gray-700">Subtotal</p>
-          <p class="text-gray-700">$129.99</p>
+          <p class="text-gray-700">{'$' + subTotal}</p>
         </div>
         <div class="flex justify-between">
           <p class="text-gray-700">Shipping</p>
-          <p class="text-gray-700">$4.99</p>
+          <p class="text-gray-700">{'$' + shippingCharges}</p>
         </div>
         <hr class="my-4" />
         <div class="flex justify-between">
           <p class="text-lg font-bold">Total</p>
           <div class="">
-            <p class="mb-1 text-lg font-bold">$134.98 USD</p>
+            <p class="mb-1 text-lg font-bold">${subTotal + shippingCharges}</p>
             <p class="text-sm text-gray-700">including VAT</p>
           </div>
         </div>
