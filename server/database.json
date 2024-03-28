@@ -42,10 +42,5 @@
       "price": "$4 / kg"
     }
   ],
-  "cart": [
-    {
-      "id": "d71f",
-      "productId": 2
-    }
-  ]
+  "cart": []
 }
