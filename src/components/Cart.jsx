@@ -25,6 +25,24 @@ const Cart = () => {
     setItems(prevItems => prevItems.filter(prevItem => prevItem.id != item.id));
   };
 
+  const checkout = () =>
+  {
+    let payload =
+    {
+      method: 'DELETE',
+    };
+
+    items.forEach((item, index) => {
+      fetch('http://localhost:3000/cart/' + item.id, payload)
+      .then((response) => response.json())
+      .catch(error => { alert('Error removing product from cart: ' + error); });
+      
+      setItems(prevItems => prevItems.filter(prevItem => prevItem.id != item.id));
+    });
+
+    alert('Order placed');
+  };
+
   const shippingCharges = 4.99;
   const subTotal = items.reduce((total, item) => total + (item.quantity * item.product.price), 0);
 
@@ -81,7 +99,7 @@ const Cart = () => {
             <p class="text-sm text-gray-700">including VAT</p>
           </div>
         </div>
-        <button class="mt-6 w-full rounded-md bg-[#ffb524] py-1.5 font-medium text-blue-50 hover:bg-slate-500">Check out</button>
+        <button class="mt-6 w-full rounded-md bg-[#ffb524] py-1.5 font-medium text-blue-50 hover:bg-slate-500" onClick={() => checkout()}>Check out</button>
       </div>
     </div>
   )
