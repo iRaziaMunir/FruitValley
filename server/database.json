@@ -2,12 +2,12 @@
   "products": [
     {
       "id": 1,
-      "itemType": "service",
-      "type": "vegetable",
+      "type": "fruit",
       "image": "fruite-item-1.jpg",
       "name": "Oranges",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-      "price": "44"
+      "price": "44",
+      "unit": "kg"
     },
     {
       "id": 2,
@@ -15,7 +15,8 @@
       "image": "fruite-item-2.jpg",
       "name": "Raspberries",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-      "price": "55"
+      "price": "55",
+      "unit": "kg"
     },
     {
       "id": 3,
@@ -23,7 +24,8 @@
       "image": "fruite-item-3.jpg",
       "name": "Bananas",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-      "price": "66"
+      "price": "66",
+      "unit": "Dozen"
     },
     {
       "id": 4,
@@ -31,7 +33,8 @@
       "image": "fruite-item-4.jpg",
       "name": "Apricots",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-      "price": "33"
+      "price": "33",
+      "unit": "kg"
     },
     {
       "id": 5,
@@ -39,8 +42,15 @@
       "image": "fruite-item-5.jpg",
       "name": "Grapes",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
-      "price": "22"
+      "price": "22",
+      "unit": "kg"
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": "d9ad",
+      "productId": 1,
+      "quantity": 1
+    }
+  ]
 }

@@ -36,7 +36,7 @@ const Cart = () => {
       fetch('http://localhost:3000/cart/' + item.id, payload)
       .then((response) => response.json())
       .catch(error => { alert('Error removing product from cart: ' + error); });
-      
+
       setItems(prevItems => prevItems.filter(prevItem => prevItem.id != item.id));
     });
 
@@ -67,7 +67,7 @@ const Cart = () => {
                   <img className='w-20 h-20 rounded-full' src={"../images/" + item.product.image} alt={item.product.name} />
                 </td>
                 <td>{item.product.name}</td>
-                <td>{'$' + item.product.price}</td>
+                <td>{'$' + item.product.price} / {item.product.unit}</td>
                 <td>{item.quantity}</td>
                 <td>{'$' + item.product.price * item.quantity}</td>
                 <td className='text-2xl text-red-500'>
