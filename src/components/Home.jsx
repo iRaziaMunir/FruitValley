@@ -38,11 +38,11 @@ const Home = () => {
     </div>
     ))}
     </div>
-    {/* <ProductListing /> */}
+    <ProductListing />
     {/*-------------- services section------------------ */}
-      {/* <ServiceItems /> */}
-      {/* <FreshOrganicVegetables /> */}
-      {/* <Banner /> */}
+      <ServiceItems />
+      <FreshOrganicVegetables />
+      <Banner />
       <Testimonials />
     </>
   )
