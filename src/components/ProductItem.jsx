@@ -3,7 +3,7 @@ import {Link, NavLink} from "react-router-dom";
 import { FaShoppingBag } from "react-icons/fa";
 const ProductItem = ({item}) => {
 
-  const handleAddToCart = () =>
+  const addToCart = () =>
   {
     let payload =
     {
@@ -30,7 +30,7 @@ const ProductItem = ({item}) => {
         <p className='text-center mb-2 mx-4 text-truncate'>{item.description}</p>
         <div className='mx-3 mt-3'>
           <span className='mx-1 text-[#45595b] text-xl font-semibold'>{item.price}</span>
-          <button className='relative ml-3 px-5 py-2 border-1 border-[#ffb524] rounded-full font-bold text-[#81c408] hover:text-[#fff]  hover:bg-[#ffb524] active:text-[#fff] active:bg-[#ffb524]' onClick={handleAddToCart}><FaShoppingBag className='absolute left-5 bottom-3 text-[#81c408] hover:text-[#81c408]'/> Add to cart</button>
+          <button className='relative ml-3 px-5 py-2 border-1 border-[#ffb524] rounded-full font-bold text-[#81c408] hover:text-[#fff]  hover:bg-[#ffb524] active:text-[#fff] active:bg-[#ffb524]' onClick={addToCart}><FaShoppingBag className='absolute left-5 bottom-3 text-[#81c408] hover:text-[#81c408]'/> Add to cart</button>
         </div>
       </div>
     </div>
