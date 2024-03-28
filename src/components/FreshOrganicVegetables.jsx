@@ -41,7 +41,6 @@ const FreshOrganicVegetables = () => {
     const [current, setCurrent] = useState(0);
     const prev = () => setCurrent((current) => (current === 0 ? items.length - 3 : current - 1))
     const next = () => setCurrent((current) => (current === items.length - 3 ? 0 : current + 1))
-    console.log(current);
    
     useEffect(()=>{
       if(autoSlide){

@@ -5,6 +5,9 @@ import Contact from '../components/Contact'
 import Shop from '../components/Shop'
 import ShopDetail from '../components/ShopDetail'
 import Pages from '../components/Pages'
+import ErrorPage from '../ErrorPage';
+import SingleProductPage from '../components/SingleProductPage';
+import Cart from '../components/Cart';
 
 const Routing = () => {
   return (
@@ -12,9 +15,12 @@ const Routing = () => {
         <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path='/shop' element={<Shop />} />
+        <Route path='/store' element={<Shop />} />
         <Route path='/shopDetail' element={<ShopDetail />} />
         <Route path='/pages' element={<Pages />} />
+        <Route path='*' element={<ErrorPage />} />
+        <Route path='/singleproduct/:id' element={<SingleProductPage />} />
+        <Route path='/cart' element={<Cart />} />
       </Routes>
     </>
   )

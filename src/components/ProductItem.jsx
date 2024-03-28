@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link, NavLink} from "react-router-dom";
 import { FaShoppingBag } from "react-icons/fa";
 const ProductItem = ({item}) => {
   return (

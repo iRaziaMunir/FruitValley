@@ -7,6 +7,7 @@ const ProductListing = () => {
 
 	useEffect(() => {
 		fetch("/server/database/products.json")
+		// fetch("https://api.pujakaitem.com/api/products")
 			.then((response) => response.json())
 			.then((data) => {
 				setProductsList(data); // Update state with the fetched data
@@ -64,9 +65,9 @@ const ProductListing = () => {
 			</nav>
 		</div>
 	</div>
-	<div className="organicProduct-bottom rounded-md mt-16 flex gap-4 flex-wrap justify-center">
+	<div className="organicProduct-bottom rounded-md mt-16 flex gap-4 flex-wrap justify-center ">
 		{productItems().map((item, index) => {
-			return <ProductItem item={item} key={item.id} />;
+			return <ProductItem item={item} key={index} />;
 		})}
 	</div>
 </div>

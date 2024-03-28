@@ -4,15 +4,20 @@ import Routing from "./utils/Routing";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+// import {AppProvider} from './context/ProductContext'
+// import { AppContext } from "./context/ProductContext";
 
 const App = () => {
 	return (
+		
 		<>
+		
 			<Navbar />
 			<Header />
 			<Routing />
 			<Footer />
 		</>
+		
 	);
 };
 
