@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <>
     {/*----------Features section------- */}
-    <FeatureProducts />
+    {/* <FeatureProducts /> */}
     <div className='w-full flex flex-wrap justify-center items-center px-40 md:px-0 sm:px-0 py-5 '>
     {featuresData.map((item, index)=>(
       <div key={index} className='w-[300px] h-[300px] flex justify-evenly items-center'>
