@@ -6,15 +6,12 @@ const ProductListing = () => {
 	const [productsList, setProductsList] = useState([]);
 
 	useEffect(() => {
-		fetch("/server/database/products.json")
-		// fetch("https://api.pujakaitem.com/api/products")
-			.then((response) => response.json())
-			.then((data) => {
-				setProductsList(data); // Update state with the fetched data
-			})
-			.catch((error) => {
-				console.error("Error fetching data:", error);
-			});
+		fetch("http://localhost:3000/products?_page=1")
+		.then((response) => response.json())
+		.then((json) => {
+			setProductsList(json.data);
+		})
+		.catch((error) => { console.error("Error fetching data:", error); });
 	}, []);
 
 	const productItems = () => {

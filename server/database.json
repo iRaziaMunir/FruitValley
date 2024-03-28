@@ -1,0 +1,56 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "type": "fruit",
+      "image": "fruite-item-1.jpg",
+      "name": "Oranges",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "44",
+      "unit": "kg"
+    },
+    {
+      "id": 2,
+      "type": "fruit",
+      "image": "fruite-item-2.jpg",
+      "name": "Raspberries",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "55",
+      "unit": "kg"
+    },
+    {
+      "id": 3,
+      "type": "vegetable",
+      "image": "fruite-item-3.jpg",
+      "name": "Bananas",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "66",
+      "unit": "Dozen"
+    },
+    {
+      "id": 4,
+      "type": "vegetable",
+      "image": "fruite-item-4.jpg",
+      "name": "Apricots",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "33",
+      "unit": "kg"
+    },
+    {
+      "id": 5,
+      "type": "fruit",
+      "image": "fruite-item-5.jpg",
+      "name": "Grapes",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "22",
+      "unit": "kg"
+    }
+  ],
+  "cart": [
+    {
+      "id": "d9ad",
+      "productId": 1,
+      "quantity": 1
+    }
+  ]
+}
