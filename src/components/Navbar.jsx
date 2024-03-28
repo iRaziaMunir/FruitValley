@@ -8,7 +8,7 @@ import { RxCross2 } from "react-icons/rx";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
-	const { loginWithRedirect, logout, isAuthenticated , user } = useAuth0();
+	const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
 	return (
 		<>
@@ -21,7 +21,7 @@ const Navbar = () => {
 						to="./"
 					>
 						<h1 className=" logo text-4xl md:text-2xl sm:text-xl font-bold text-lime-500">
-							Rehman Store
+							FruitValley
 						</h1>
 					</NavLink>
 					<div className="text-zinc-400 text-md flex gap-10 ">
@@ -89,7 +89,7 @@ const Navbar = () => {
 						</NavLink>
 					</div>
 					<div className="text-zinc-400 flex gap-10">
-						<div className="w-60 h-10 bg-zinc-100 flex justify-center items-center rounded-full outline outline-2 outline-[#ffb524]">
+						<div className="w-60 h-10 bg-zinc-100 flex justify-center items-center rounded-full outline outline-1 outline-[#ffb524]">
 							<input
 								type="text"
 								className="bg-zinc-100 outline outline-0 left-0 text-zinc-500"
@@ -113,10 +113,10 @@ const Navbar = () => {
                     }} to='/user' className='user-icon text-lime-500 text-2xl mt-2 '>
                     <button onClick={() => loginWithRedirect()}><FaUser/></button>
                     </NavLink> */}
-                        {isAuthenticated && (user.name || user.email)}
+						{isAuthenticated && (user.name || user.email)}
 						{isAuthenticated ? (
 							<button
-								className="hover:text-[#ffb254]  text-md text-center border-1 px-3"
+								className="hover:text-[#ffb254]  text-md text-center border-[#ffb524] border-1 px-3"
 								onClick={() =>
 									logout({
 										logoutParams: {
@@ -129,7 +129,7 @@ const Navbar = () => {
 							</button>
 						) : (
 							<button
-								className="hover:text-[#ffb254] text-md text-center border-1 px-3"
+								className="hover:text-[#ffb254] text-md text-center border-[#ffb524] border-1 px-3"
 								onClick={() => loginWithRedirect()}
 							>
 								Log In

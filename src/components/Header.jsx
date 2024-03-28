@@ -13,7 +13,7 @@ const Header = () => {
 				<div className="hero-sub-container w-full h-[550px] p-60  flex justify-center items-center absolute top-[100px]">
 					<div className="hero-left-container  w-[784px] h-[341px] pl-10">
 						<h4 className="text-[24px] text-[#ffb524] font-semibold mb-4">
-							Welcome to Rehman Store
+							Welcome to FruitValley
 						</h4>
 						<h1 className=" text-[#81c408] text-[4rem] font-bold mb-[50px]">
 							Quality Products
