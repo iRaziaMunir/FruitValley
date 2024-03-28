@@ -10,6 +10,21 @@ const Cart = () => {
 		.catch((error) => { console.error("Error fetching data:", error); });
 	}, []);
 
+  const removeItem = (item) =>
+  {
+    let payload =
+    {
+      method: 'DELETE',
+    };
+
+    fetch('http://localhost:3000/cart/' + item.id, payload)
+    .then((response) => response.json())
+    .then((json) => { alert(`Removed ${item.product.name} from cart`); })
+    .catch(error => { alert('Error removing product from cart: ' + error); });
+
+    setItems(prevItems => prevItems.filter(prevItem => prevItem.id != item.id));
+  };
+
   const shippingCharges = 4.99;
   const subTotal = items.reduce((total, item) => total + (item.quantity * item.product.price), 0);
 
@@ -37,7 +52,9 @@ const Cart = () => {
                 <td>{'$' + item.product.price}</td>
                 <td>{item.quantity}</td>
                 <td>{'$' + item.product.price * item.quantity}</td>
-                <td className='text-2xl text-red-500'><button><MdDelete className='ml-10'/></button></td>
+                <td className='text-2xl text-red-500'>
+                  <button onClick={() => removeItem(item)}><MdDelete className='ml-10'/></button>
+                </td>
               </tr>
             ))}
           </tbody>
