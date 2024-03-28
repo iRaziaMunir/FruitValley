@@ -2,24 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {Link, NavLink} from "react-router-dom";
 
 const ServiceItems = () => {
-  // const [items, setItems] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch('/server/database/products.json');
-  //       if (!response.ok) {
-  //         throw new Error('Network response was not ok');
-  //       }
-  //       const data = await response.json();
-  //       setItems(data);
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
 const items = [
   {image:'./images/featur-1.jpg', name:'Fresh Apples',detail:'30% OFF'},
   {image:'./images/featur-2.jpg', name:'Fresh Apples',detail:'30% OFF'},
