@@ -87,6 +87,17 @@ const Navbar = () => {
 						>
 							Contact
 						</NavLink>
+						<NavLink
+							style={(e) => {
+								return {
+									color: e.isActive ? "#ffb254" : "",
+									fontWeight: e.isActive ? "bold" : "",
+								};
+							}}
+							to="/checkout"
+						>
+							CheckOut
+						</NavLink>
 					</div>
 					<div className="text-zinc-400 flex gap-10">
 						<div className="w-60 h-10 bg-zinc-100 flex justify-center items-center rounded-full outline outline-2 outline-[#ffb524]">

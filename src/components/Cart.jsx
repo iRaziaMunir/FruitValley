@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { MdDelete } from "react-icons/md";
+import { Link, NavLink } from "react-router-dom";
+
 const Cart = () => {
-  
+
   const [items, setItems] = useState([]);
 
 	useEffect(() => {
@@ -100,7 +102,9 @@ const Cart = () => {
             <p class="text-sm text-gray-700">including VAT</p>
           </div>
         </div>
+        <NavLink to={'/checkout'}>
         <button class="mt-6 w-full rounded-md bg-[#ffb524] py-1.5 font-medium text-blue-50 hover:bg-slate-500" onClick={() => checkout()}>Check out</button>
+        </NavLink>
       </div>
     </div>
   )

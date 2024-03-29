@@ -7,6 +7,7 @@ import ShopDetail from '../components/ShopDetail'
 import Pages from '../components/Pages'
 import ErrorPage from '../ErrorPage';
 import Cart from '../components/Cart';
+import Checkout from '../components/Checkout';
 
 const Routing = () => {
   return (
@@ -16,7 +17,7 @@ const Routing = () => {
         <Route path='/contact' element={<Contact />} />
         <Route path='/store' element={<Shop />} />
         <Route path='/shopDetail' element={<ShopDetail />} />
-        <Route path='/pages' element={<Pages />} />
+        <Route path='/checkout' element={<Checkout />} />
         <Route path='*' element={<ErrorPage />} />
         <Route path='/cart' element={<Cart />} />
       </Routes>
