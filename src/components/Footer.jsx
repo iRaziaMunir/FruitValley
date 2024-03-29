@@ -14,7 +14,7 @@ const Footer = () => {
             <div className='footer-top w-full h-[121px] flex justify-around gap-10 py-2 px-40'>
                 <div className='logo'>
                     <NavLink to='/'>
-                        <h1 className='text-4xl font-bold text-lime-500'>Rehman Store</h1>
+                        <h1 className='text-4xl font-bold text-lime-500'>FruitValley</h1>
                         <h5 className='text-[18px] text-[#ffb524] font-semibold mb-4'>Fresh products</h5>
                     </NavLink>
                 </div>
@@ -70,7 +70,7 @@ const Footer = () => {
 							<div className="logo">
 								<NavLink to="/">
 									<h1 className="text-4xl font-bold text-lime-500">
-										Rehman Store
+										FruitValley
 									</h1>
 									<h5 className="text-[18px] text-[#ffb524] font-semibold mb-4">
 										Quality products
@@ -264,7 +264,7 @@ const Footer = () => {
 								{new Date().getFullYear()}
 								<NavLink to="/">
 									<h1 className="text-md ml-2 font-bold text-lime-500">
-										Rehman Store
+										FruitValley
 									</h1>
 								</NavLink>
 								, All right reserved.

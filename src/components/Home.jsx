@@ -9,7 +9,6 @@ import ServiceItems from './ServiceItems';
 import FreshOrganicVegetables from './FreshOrganicVegetables';
 import Banner from './Banner';
 import Testimonials from './Testimonials';
-import FeatureProducts from './FeatureProducts';
 
 const featuresData =[
   {icon:<FaCarSide className='text-5xl text-[#fff]'/>, name:'Free Shipping', description:'Free on order over $300'},
@@ -22,7 +21,7 @@ const Home = () => {
   return (
     <>
     {/*----------Features section------- */}
-    {/* <FeatureProducts /> */}
+    
     <div className='w-full flex flex-wrap justify-center items-center px-40 md:px-0 sm:px-0 py-5 '>
     {featuresData.map((item, index)=>(
       <div key={index} className='w-[300px] h-[300px] flex justify-evenly items-center'>

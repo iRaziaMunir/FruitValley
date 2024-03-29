@@ -8,7 +8,7 @@ import { RxCross2 } from "react-icons/rx";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
-	const { loginWithRedirect, logout, isAuthenticated , user } = useAuth0();
+	const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
 	return (
 		<>
@@ -21,7 +21,7 @@ const Navbar = () => {
 						to="./"
 					>
 						<h1 className=" logo text-4xl md:text-2xl sm:text-xl font-bold text-lime-500">
-							Rehman Store
+							FruitValley
 						</h1>
 					</NavLink>
 					<div className="text-zinc-400 text-md flex gap-10 ">
@@ -113,7 +113,7 @@ const Navbar = () => {
                     }} to='/user' className='user-icon text-lime-500 text-2xl mt-2 '>
                     <button onClick={() => loginWithRedirect()}><FaUser/></button>
                     </NavLink> */}
-                        {isAuthenticated && (user.name || user.email)}
+						{isAuthenticated && (user.name || user.email)}
 						{isAuthenticated ? (
 							<button
 								className="hover:text-[#ffb254]  text-md text-center border-1 px-3"
