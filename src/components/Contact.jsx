@@ -5,7 +5,7 @@ const Contact = () => {
 <>
   <div className="flex flex-col bg-gray-100 py-10 m-20 rounded-md ">
   <div className="m-10 px-10 py-10 bg-white rounded-md ">
-    <iframe className='w-100 h-[400px]' frameborder="0" marginheight="0" marginwidth="0" title="map" scrolling="no" src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"></iframe>
+    <iframe className='w-100 h-[400px]' frameborder="0" marginheight="0" marginwidth="0" title="map" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3403.3532817049595!2d74.27623439999999!3d31.459466600000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391905405622c51d%3A0x5068422a19bab54d!2sGroWork%20Coworking%20%7C%2070-R1%2C%20Johar%20Town%2C%20Lahore!5e0!3m2!1sen!2s!4v1711679140824!5m2!1sen!2s"></iframe>
   </div>
   <div className="mx-auto w-full max-w-[550px]">
     <form action="https://formspree.io/f/mleqwjwb" method="POST">
