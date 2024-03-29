@@ -32,7 +32,7 @@ const ProductListing = () => {
 		<div className="productTabs ">
 			<nav className="flex gap-10">
 				<button
-					className={`px-4 py-2 bg-[#f2f4f6] text-grey-800 text-semibold  rounded-full pointer ${
+					className={`px-4 py-2 bg-[#f2f4f6] text-grey-800 text-semibold  rounded-md pointer transition transform ease-in duration-300 ${
 						productType == null
 							? "bg-[#ffb524] text-white"
 							: ""
@@ -42,7 +42,7 @@ const ProductListing = () => {
 					All
 				</button>
 				<button
-					className={`px-4 py-2 bg-[#f2f4f6] text-grey-800 text-semibold  rounded-full pointer
+					className={`px-4 py-2 bg-[#f2f4f6] text-grey-800 text-semibold  rounded-md pointer transition transform ease-in duration-300
 						${
 			productType == "vegetable"
 				? "bg-[#ffb524] text-white"
@@ -53,7 +53,7 @@ const ProductListing = () => {
 					Vegetables
 				</button>
 				<button
-					className={`px-4 py-2 bg-[#f2f4f6]  text-grey-800 text-semibold  rounded-full pointer
+					className={`px-4 py-2 bg-[#f2f4f6]  text-grey-800 text-semibold  rounded-md pointer transition transform ease-in duration-300
 						${productType == "fruit" ? "bg-[#ffb524] text-white" : ""}`}
 					onClick={() => setProductType("fruit")}
 				>

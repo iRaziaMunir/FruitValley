@@ -22,7 +22,7 @@ const Header = () => {
 						{/* <div className="hero-right-container   h-14  rounded-full bg-white-100 flex justify-between border-0 border-[#ffb524]"> */}
 							{/* <input className='bg-white-100 max-w-md px-3 outline-none rounded-full ' type="text" placeholder='Search' /> */}
 							<NavLink to={'/store'} className = ''>
-							<button className="rounded-md max-w-md hover:bg-lime-500 bg-[#ffb524] text-[#fff] font-medium text-xm  px-5 py-3 ">
+							<button className="rounded-md max-w-md hover:bg-[#ffb524] bg-grey-100 text-slate-900 hover:text-[#fff] font-medium text-xm  px-5 py-3 border-2 border-[#ffb524] transition transform ease-in duration-300">
 								Shop Now
 							</button>
 							</ NavLink>
