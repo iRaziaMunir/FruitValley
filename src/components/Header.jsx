@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import Carousel from "./Carousel";
 
 const Header = () => {
@@ -16,14 +17,16 @@ const Header = () => {
 							Welcome to FruitValley
 						</h4>
 						<h1 className=" text-[#81c408] text-[4rem] font-bold mb-[50px]">
-							Quality Products
+							Fresh Products
 						</h1>
-						<div className="hero-right-container   h-14  rounded-full bg-white-100 flex justify-between border-0 border-[#ffb524]">
+						{/* <div className="hero-right-container   h-14  rounded-full bg-white-100 flex justify-between border-0 border-[#ffb524]"> */}
 							{/* <input className='bg-white-100 max-w-md px-3 outline-none rounded-full ' type="text" placeholder='Search' /> */}
-							<button className="rounded-full max-w-md hover:bg-lime-500 bg-[#ffb524] text-[#fff] font-medium text-xm pl-10 pr-10         border-l-2 border-[#ffb524]">
+							<NavLink to={'/store'} className = ''>
+							<button className="rounded-md max-w-md hover:bg-lime-500 bg-[#ffb524] text-[#fff] font-medium text-xm  px-5 py-3 ">
 								Shop Now
 							</button>
-						</div>
+							</ NavLink>
+						{/* </div> */}
 					</div>
 					<Carousel />
 				</div>

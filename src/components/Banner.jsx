@@ -10,7 +10,7 @@ const Banner = () => {
             <h1 className='text-[4rem] font-semibold text-[#fff]'>Fresh Exotic Fruits</h1>
             <p className='text-[#45595b] text-[4rem] mb-4'>in Our Store</p>
             <p className='text-[#45595b] pr-20'>The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic words etc.</p>
-            <NavLink><button className=' my-10 text-xl font-semibold text-[#45595b] hover:bg-[#fff] hover:border-[#ffb524] px-5 py-3 border-2 rounded-full transition transform ease-in duration-300'>Buy</button></NavLink>
+            <NavLink to={'/store'}><button className=' my-10 text-xl font-semibold text-[#45595b] hover:bg-[#fff] hover:border-[#ffb524] px-5 py-3 border-2 rounded-full transition transform ease-in duration-300'>Buy</button></NavLink>
           </div>
         </div>
         <div className='banner-right w-[50%] h-[100%]'>
