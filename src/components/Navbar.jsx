@@ -127,7 +127,7 @@ const Navbar = () => {
 						{isAuthenticated && (user.name || user.email)}
 						{isAuthenticated ? (
 							<button
-								className="hover:text-[#ffb254]  text-md text-center border-1 px-3"
+								className="hover:text-[#ffb254]  text-md text-center border-1 border-[#ffb524] px-3"
 								onClick={() =>
 									logout({
 										logoutParams: {
@@ -140,7 +140,7 @@ const Navbar = () => {
 							</button>
 						) : (
 							<button
-								className="hover:text-[#ffb254] text-md text-center border-1 px-3"
+								className="hover:text-[#ffb254] text-md text-center border-1 border-[#ffb524] px-3"
 								onClick={() => loginWithRedirect()}
 							>
 								Log In
