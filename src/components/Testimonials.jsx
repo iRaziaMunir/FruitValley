@@ -63,15 +63,15 @@ const Testimonials = () => {
       }
     },[autoSlide])
 return <>
-  <div className=" testimonial-container my-32">
-  <div className=' testimonial-container flex flex-col px-60 '>
-    <div className="testimonial-top w-full h-40">
+  <div className=" testimonial-container my-32 px-10">
+  <div className=' testimonial-container flex flex-col '>
+    <div className="testimonial-top w-full  pb-10">
     <h2 className='text-center my-4 text-2xl text-[#81c408]'>Our Testimonial</h2>
-    <h1 className="text-center text-[#45595b] text-5xl font-semibold">
+    <h1 className="text-center text-nowrap text-[#45595b] text-5xl font-semibold">
     Our Client Saying!
     </h1> 
   </div>
-  <div className="testimonialTabs w-full flex justify-end pr-44">
+  <div className="testimonialTabs w-full flex justify-end md:pr-44">
     <nav className="flex gap-10">
       <button onClick={next}
       className={`px-4 py-2 bg-[#f2f4f6] hover:bg-[#ffb524] text-[#81c408] hover:text-white transition ease-in duration-300 text-semibold  rounded-full pointer border-1 border-[#ffb524] `} >
@@ -83,14 +83,15 @@ return <>
       </button>
     </nav>
     </div>
-    <div className=' testimonial-bottom-inner w-full h-[100%] flex gap-2 py-5 overflow-hidden'>
+    <div className=' testimonial-bottom-inner md:w-[100%] h-auto flex  gap-5 py-2 overflow-hidden'>
     {testimonial.map((client, index) => {
   return (
     
-    <div className='testimonial-client rounded-md bg-[#f2f4f6] p-5 transition transform duration-300'
-    style={{transform: `translateX(-${current*100}%)`} } key={index}>
+    <div className={`testimonial-client rounded-md bg-[#f2f4f6] p-4 md:block flex flex-wrap transition transform duration-300`}
+    style={{transform: `translateX(-${current*100}%)`} } key={index}
+    >
         <div className='test-details mb-3'>
-          <p>{client.description}</p>
+          <p className='text-wrap'>{client.description}</p>
         </div>
         <hr className='text-[#ffb524] border-2'/>
         <div className='client-profile flex mt-8 gap-10'>
