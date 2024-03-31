@@ -102,7 +102,7 @@ const Cart = () => {
             <p class="text-sm text-gray-700">including VAT</p>
           </div>
         </div>
-        <NavLink>
+        <NavLink to={'/checkout'}>
         <button class="mt-6 w-full rounded-md bg-[#ffb524] py-1.5 font-medium text-blue-50 hover:bg-slate-500"> Proceed to CheckOut</button>
         </NavLink>
         <NavLink to={'/store'}>
