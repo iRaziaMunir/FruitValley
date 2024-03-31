@@ -21,8 +21,8 @@ const featuresData =[
 const Home = () => {
   return (
     <>
-      {/* <Header /> */}
-      <div className='w-full flex flex-wrap justify-center items-center px-40 md:px-0 sm:px-0 py-5 '>
+       <Header />
+      {/* <div className='w-full flex flex-wrap justify-center items-center px-40 md:px-0 sm:px-0 py-5 '>
       {featuresData.map((item, index)=>(
       <div key={index} className='w-[300px] h-[300px] flex justify-evenly items-center'>
       <div className=" bg-[#f2f4f6] rounded p-10 flex relative">
@@ -36,13 +36,13 @@ const Home = () => {
       </div>
       </div>
       ))}
-      </div>
+      </div> */}
       <ProductListing />
       {/*-------------- services section------------------ */}
-      <ServiceItems />
+       <ServiceItems /> 
       <FreshOrganicVegetables />
       <Banner />
-      <Testimonials />
+      <Testimonials /> 
     </>
   )
 }

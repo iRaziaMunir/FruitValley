@@ -22,14 +22,14 @@ const ProductListing = () => {
 
 	return (
 <>
-<div className="w-[100%] px-40">
-	<div className="organicProduct-top flex justify-between px-32 items-center">
-		<div className="heading">
+<div className="w-[100%] bg-gray-100 py-20">
+	<div className="organicProduct-top flex md:flex-nowrap flex-wrap items-center justify-evenly mt-40">
+		<div className="heading pb-10 md:pb-0">
 			<h1 className=" text-[#45595b] text-5xl font-semibold">
 				Our Organic Products
 			</h1>
 		</div>
-		<div className="productTabs ">
+		<div className="productTabs">
 			<nav className="flex gap-10">
 				<button
 					className={`px-4 py-2 bg-[#f2f4f6] text-grey-800 text-semibold  rounded-md pointer transition transform ease-in duration-300 ${

@@ -28,9 +28,9 @@ const FreshOrganicVegetables = () => {
   return (
     <> 
 <div className="w-[100%] px-10">
-  <div className="organicProduct-top flex justify-between items-center px-32">
+  <div className="organicProduct-top flex md:flex-row flex-col gap-5 justify-between items-center px-32">
     <div className="heading">
-      <h1 className=" text-[#45595b] text-5xl font-semibold">
+      <h1 className=" text-[#45595b] md:text-5xl text-3xl text-nowrap font-semibold">
       Our Organic Products
       </h1>
     </div>

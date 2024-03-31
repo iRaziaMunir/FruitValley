@@ -4,18 +4,23 @@ import Routing from "./utils/Routing";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-// import {AppProvider} from './context/ProductContext'
-// import { AppContext } from "./context/ProductContext";
+import { useState } from "react";
+
 
 const App = () => {
+	const [dataFromCart, setDataFromCart] = useState('');
+	const receiveDataFromCart = (data) => {
+    setDataFromCart(data);
+  };
 	return (
 		
 		<>
-		
-			<Navbar />
-			<Header />
+		<div className="">
+			<Navbar sendDataToApp = {receiveDataFromCart}/>
+			{/* <Header /> */}
 			<Routing />
 			<Footer />
+			</div>	
 		</>
 		
 	);
