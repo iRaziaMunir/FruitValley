@@ -178,8 +178,7 @@ const Navbar = () => {
     { id: 2, text: 'Store', path: '/store'},
     { id: 3, text: 'CheckOut' , path: '/checkout'},
     { id: 4, text: 'Contact' , path: '/contact'},
-    // { id: 5, text: <FaShoppingBag /> , path: '/cart'},
-    // { id: 6, text: < IoSearch/> , path: '/cart'}
+    
   ];
 
   return (
@@ -217,8 +216,8 @@ const Navbar = () => {
         to='/cart'>
         <FaShoppingBag />
         </NavLink>
-        <span className='bg-[#ffb524] text-white text-sm w-8 h-8 flex items-center justify-center rounded-full absolute top-3 right-[23%]'></span>
-           {/* {isAuthenticated && (user.name || user.email)} */}
+        {/* <span className='bg-[#ffb524] text-white text-sm w-8 h-8 flex items-center justify-center rounded-full absolute top-3 right-[23%]'></span> */}
+           {isAuthenticated && (user.name || user.email)}
 						{isAuthenticated ? (
  							<button
  								className="hover:text-[#ffb254]  text-md text-center border-1 border-[#ffb524] px-3 py-2"
@@ -266,12 +265,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation Items */}
         {navItems.map(item => (
-          // <li
-          //   key={item.id}
-          //   className='p-4 border-b rounded-xl hover:bg-[#00df9a] duration-300 hover:text-black cursor-pointer border-gray-600'
-          // >
-          //   {item.text}
-          // </li>
+         
         <NavLink className="px-2 py-4 rounded-xl m-2 cursor-pointer duration-300 text-[#ffb524] block"
         style={(e) => {
         return {
