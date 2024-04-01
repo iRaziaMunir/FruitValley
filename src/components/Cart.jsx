@@ -92,31 +92,31 @@ const Cart = () => {
         </table>
       </div>
       {/* Sub total */}
-      <div class=" h-full rounded-lg border bg-slate-100 shadow-md md:mt-0 md:w-1/3 p-6">
+      <div className=" h-full rounded-lg border bg-slate-100 shadow-md md:mt-0 md:w-1/3 p-6">
         <div className='text-center py-2'>
           <h2 className="text-4xl font-medium text-[#45595b]">Sub Total</h2>
         </div>
-        <div class="mb-2 flex justify-between">
-          <p class="text-gray-700">Subtotal</p>
-          <p class="text-gray-700">{'$' + subTotal}</p>
+        <div className="mb-2 flex justify-between">
+          <p className="text-gray-700">Subtotal</p>
+          <p className="text-gray-700">{'$' + subTotal}</p>
         </div>
-        <div class="flex justify-between">
-          <p class="text-gray-700">Shipping</p>
-          <p class="text-gray-700">{'$' + shippingCharges}</p>
+        <div className="flex justify-between">
+          <p className="text-gray-700">Shipping</p>
+          <p className="text-gray-700">{'$' + shippingCharges}</p>
         </div>
-        <hr class="my-4" />
-        <div class="flex justify-between">
-          <p class="text-lg font-bold">Total</p>
-          <div class="">
-            <p class="mb-1 text-lg font-bold">${subTotal + shippingCharges}</p>
+        <hr className="my-4" />
+        <div className="flex justify-between">
+          <p className="text-lg font-bold">Total</p>
+          <div className="">
+            <p className="mb-1 text-lg font-bold">${subTotal + shippingCharges}</p>
            
           </div>
         </div>
         <NavLink to={'/checkout'}>
-        <button class="mt-6 w-full rounded-md bg-[#ffb524] py-1.5 font-medium text-blue-50 hover:bg-slate-500"> Proceed to CheckOut</button>
+        <button className="mt-6 w-full rounded-md bg-[#ffb524] py-1.5 font-medium text-blue-50 hover:bg-slate-500"> Proceed to CheckOut</button>
         </NavLink>
         <NavLink to={'/store'}>
-        <button class="mt-6 w-full rounded-md bg-[#81c408] py-1.5 font-medium text-blue-50 hover:bg-slate-500"> Continue Shopping </button>
+        <button className="mt-6 w-full rounded-md bg-[#81c408] py-1.5 font-medium text-blue-50 hover:bg-slate-500"> Continue Shopping </button>
         </NavLink>
       </div>
     </div>
