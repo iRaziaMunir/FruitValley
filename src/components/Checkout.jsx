@@ -49,7 +49,6 @@ const Checkout = () => {
   const subTotal = items.reduce((total, item) => total + (item.quantity * item.product.price), 0);
   return (
     <>
-    responsive
       <div className=' bg-white pb-10 pt-40'>
         <div className='flex lg:flex-row flex-col items-start'>
       <div className="mx-auto w-full mt-40 max-w-[550px]">
@@ -315,8 +314,11 @@ const Checkout = () => {
     </div>
   </div>
   </div>
+  </div>
+  </div>
+  </div>
 </>
   )
 }
 
-export default Checkout
+export default Checkout;
