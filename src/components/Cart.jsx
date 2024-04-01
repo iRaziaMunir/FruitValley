@@ -24,7 +24,9 @@ const Cart = () => {
 
     fetch('http://localhost:3000/cart/' + item.id, payload)
     .then((response) => response.json())
-    .then((json) => { alert(`Removed ${item.product.name} from cart`); })
+    .then((json) => {
+      //  alert(`Removed ${item.product.name} from cart`);
+       })
     .catch(error => { alert('Error removing product from cart: ' + error); });
 
     setItems(prevItems => prevItems.filter(prevItem => prevItem.id != item.id));
@@ -107,7 +109,7 @@ const Cart = () => {
           <p class="text-lg font-bold">Total</p>
           <div class="">
             <p class="mb-1 text-lg font-bold">${subTotal + shippingCharges}</p>
-            <p class="text-sm text-gray-700">including VAT</p>
+           
           </div>
         </div>
         <NavLink to={'/checkout'}>
