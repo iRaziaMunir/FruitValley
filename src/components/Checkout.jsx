@@ -178,7 +178,7 @@ const Checkout = () => {
   <div className=" py-40  flex flex-col md:flex-row gap-10 md:items-start md:px-20">
       <div className='w-full '>
         <table className='w-[100%]'>
-          <thead className='text-xl'>
+          <thead className='text-md'>
           <tr className='border-b border-black'>
             <th className='py-5 text-left '>Products</th>
             <th className='py-5 text-left '>Name</th>
@@ -192,7 +192,7 @@ const Checkout = () => {
             {items.map((item, index) => (
               
               <tr className='border-b border-slate-100' key={item.id}>
-                <td className='py-5'>
+                <td className='py-3'>
                   <img className='w-20 h-20 rounded-full' src={"../images/" + item.product.image} alt={item.product.name} />
                 </td>
                 <td>{item.product.name}</td>
@@ -226,7 +226,7 @@ const Checkout = () => {
           <div class="">
             <p class="mb-1 text-lg font-bold">${subTotal + shippingCharges}</p>
             <p class="text-sm text-gray-700">including VAT</p>
-      <div className=' bg-gray-100 px-40 py-10'>
+      {/* <div className=' bg-gray-100 px-40 py-10'>
         <h2 className=" text-[#45595b] text-5xl font-semibold">Billing details</h2>
         <div className='checkout_inner flex items-start'>
           <div className=" form_container mx-auto w-full max-w-[550px] mt-[150px]">
@@ -310,7 +310,7 @@ const Checkout = () => {
         <NavLink to={'/store'}>
         <button class="mt-6 w-full rounded-md bg-[#81c408] py-1.5 font-medium text-blue-50 hover:bg-slate-500"> Continue Shopping </button>
         </NavLink>
-      </div>
+      </div> */}
     </div>
   </div>
   </div>
