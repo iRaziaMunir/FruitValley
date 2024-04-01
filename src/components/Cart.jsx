@@ -71,7 +71,7 @@ const Cart = () => {
                 </td>
                 <td>{item.product.name}</td>
                 <td>{'$' + item.product.price} / {item.product.unit}</td>
-                <td>{item.quantity}</td>
+                <td className="pl-5">{item.quantity}</td>
                 <td>{'$' + item.product.price * item.quantity}</td>
                 <td className='text-2xl text-red-500'>
                   <button onClick={() => removeItem(item)}><MdDelete className='ml-10'/></button>
