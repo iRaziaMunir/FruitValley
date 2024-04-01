@@ -161,7 +161,7 @@ import { IoSearch } from "react-icons/io5";
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { useAuth0 } from "@auth0/auth0-react";
 
-const Navbar = () => {
+const Navbar = ({cartItems}) => {
   // Auth0 hook
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   // State to manage the navbar's visibility
@@ -174,11 +174,12 @@ const Navbar = () => {
 
   // Array containing navigation items
   const navItems = [
-    { id: 1, text: 'Home', path: './' },
+    { id: 1, text: 'Home', path: '/' },
     { id: 2, text: 'Store', path: '/store'},
     { id: 3, text: 'CheckOut' , path: '/checkout'},
     { id: 4, text: 'Contact' , path: '/contact'},
-    
+    // { id: 5, text: <FaShoppingBag /> , path: '/cart'},
+    // { id: 6, text: < IoSearch/> , path: '/cart'}
   ];
 
   return (
@@ -216,8 +217,9 @@ const Navbar = () => {
         to='/cart'>
         <FaShoppingBag />
         </NavLink>
-        {/* <span className='bg-[#ffb524] text-white text-sm w-8 h-8 flex items-center justify-center rounded-full absolute top-3 right-[23%]'></span> */}
-           {isAuthenticated && (user.name || user.email)}
+        {cartItems > 0 ?<span className='bg-[#ffb524] text-white text-sm w-8 h-8 flex items-center justify-center rounded-full absolute top-3 right-[23%]'>{cartItems}</span> : "" }
+        
+           {/* {isAuthenticated && (user.name || user.email)} */}
 						{isAuthenticated ? (
  							<button
  								className="hover:text-[#ffb254]  text-md text-center border-1 border-[#ffb524] px-3 py-2"
@@ -240,14 +242,12 @@ const Navbar = () => {
  							</button>
  						)}
           </div>
-          
       </nav>
 
       {/* Mobile Navigation Icon */}
       <div onClick={handleNav} className='block md:hidden'>
         {nav ? <AiOutlineClose size={20} className = 'text-[#ffb524]'/> : <AiOutlineMenu size={20} className = 'text-[#ffb524]'/>}
       </div>
-
       {/* Mobile Navigation Menu */}
       <div
         className={
@@ -265,7 +265,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation Items */}
         {navItems.map(item => (
-         
+        
         <NavLink className="px-2 py-4 rounded-xl m-2 cursor-pointer duration-300 text-[#ffb524] block"
         style={(e) => {
         return {
@@ -277,6 +277,41 @@ const Navbar = () => {
         {item.text}
         </NavLink>
         ))}
+        <div className="text-zinc-400 mt-1 flex gap-10 items-center">
+        <NavLink className=" text-xl px-2 py-4 rounded-xl m-2 cursor-pointer duration-300 text-[#ffb524] relative"
+        style={(e) => {
+        return {
+        color: e.isActive ? "#81c408" : "",
+        fontWeight: e.isActive ? "bold" : "",
+        };
+        }}
+        to='/cart'>
+        <FaShoppingBag />
+        </NavLink>
+        {cartItems > 0 ?<span className='bg-[#ffb524] text-white text-sm w-8 h-8 flex items-center justify-center rounded-full absolute top-3 right-[23%]'>{cartItems}</span> : "" } 
+           {/* {isAuthenticated && (user.name || user.email)} */}
+						{isAuthenticated ? (
+ 							<button
+ 								className="hover:text-[#ffb254]  text-md text-center border-1 border-[#ffb524] px-3 py-2"
+ 								onClick={() =>
+ 									logout({
+ 										logoutParams: {
+ 											returnTo: window.location.origin,
+ 										},
+ 									})
+ 								}
+ 							>
+ 								Log Out
+ 							</button>
+ 						) : (
+ 							<button
+ 								className="hover:text-[#ffb254] text-md text-center border-1 border-[#ffb524] px-3 py-2"
+ 								onClick={() => loginWithRedirect()}
+ 							>
+ 								Log In
+ 							</button>
+ 						)}
+          </div>
       </div>
     </div>
   );

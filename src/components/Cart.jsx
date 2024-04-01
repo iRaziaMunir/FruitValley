@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { MdDelete } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const Cart = () => {
 
   const [items, setItems] = useState([]);
+   var cartItems = items.length;
+  console.log(cartItems, "items")
 	useEffect(() => {
 		fetch("http://localhost:3000/cart?_embed=product")
 		.then((response) => response.json())
@@ -49,6 +52,8 @@ const Cart = () => {
   const subTotal = items.reduce((total, item) => total + (item.quantity * item.product.price), 0);
 
   return (
+    <>
+    <Navbar cartItems = {cartItems} />
     <div className=" py-40  flex flex-col gap-10 md:flex-row md:items-start md:px-20">
       <div className='w-full '>
         <table className='w-[100%]'>
@@ -63,8 +68,10 @@ const Cart = () => {
           </tr>
           </thead>
           <tbody>
+          
             {items.map((item, index) => (
               
+              <>
               <tr className='border-b border-slate-100' key={item.id}>
                 <td className='py-5'>
                   <img className='w-20 h-20 rounded-full' src={"../images/" + item.product.image} alt={item.product.name} />
@@ -77,6 +84,7 @@ const Cart = () => {
                   <button onClick={() => removeItem(item)}><MdDelete className='ml-10'/></button>
                 </td>
               </tr>
+              </>
             ))}
           </tbody>
         </table>
@@ -110,6 +118,7 @@ const Cart = () => {
         </NavLink>
       </div>
     </div>
+    </>
   )
 }
 
