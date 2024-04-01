@@ -178,7 +178,7 @@ const Checkout = () => {
   <div className=" py-40  flex flex-col md:flex-row gap-10 md:items-start md:px-20">
       <div className='w-full '>
         <table className='w-[100%]'>
-          <thead className='text-md'>
+          <thead className='text-sm'>
           <tr className='border-b border-black'>
             <th className='py-5 text-left '>Products</th>
             <th className='py-5 text-left '>Name</th>
@@ -193,12 +193,12 @@ const Checkout = () => {
               
               <tr className='border-b border-slate-100' key={item.id}>
                 <td className='py-3'>
-                  <img className='w-20 h-20 rounded-full' src={"../images/" + item.product.image} alt={item.product.name} />
+                  <img className='w-12 h-12 rounded-full' src={"../images/" + item.product.image} alt={item.product.name} />
                 </td>
-                <td>{item.product.name}</td>
-                <td>{'$' + item.product.price} / {item.product.unit}</td>
-                <td>{item.quantity}</td>
-                <td>{'$' + item.product.price * item.quantity}</td>
+                <td className="text-center ">{item.product.name}</td>
+                <td className="text-center ">{'$' + item.product.price} / {item.product.unit}</td>
+                <td className="text-center ">{item.quantity}</td>
+                <td className="text-center ">{'$' + item.product.price * item.quantity}</td>
                 <td className='text-2xl text-red-500'>
                   <button onClick={() => removeItem(item)}><MdDelete className='ml-10'/></button>
                 </td>
