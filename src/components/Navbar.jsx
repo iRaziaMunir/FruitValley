@@ -195,7 +195,7 @@ const Navbar = ({cartItems}) => {
       <nav className='hidden md:flex'>
         {navItems.map(item => (
 
-        <NavLink className="text-xl px-2 py-4 rounded-xl m-2 cursor-pointer duration-300 text-[#ffb524]"
+        <NavLink className="text-xl px-2 py-4 rounded-xl m-2 cursor-pointer duration-300 text-[#ffb524]" key={item.id}
         style={(e) => {
         return {
         color: e.isActive ? "#81c408" : "",
