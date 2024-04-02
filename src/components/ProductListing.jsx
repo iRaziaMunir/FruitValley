@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ProductItem from "./ProductItem";
 
-const ProductListing = () => {
+const ProductListing = ({searchKeyword}) => {
+
 	const [productType, setProductType] = useState(null);
 	const [productsList, setProductsList] = useState([]);
+	const [filteredProducts, setFilteredProducts] = useState([]);
 
 	useEffect(() => {
 		fetch("http://localhost:3000/products?_page=1")
@@ -14,11 +16,30 @@ const ProductListing = () => {
 		.catch((error) => { console.error("Error fetching data:", error); });
 	}, []);
 
-	const productItems = () => {
-		return productType == null
-			? productsList
-			: productsList.filter((product) => product.type == productType);
-	};
+	useEffect(() => {
+    if (searchKeyword && searchKeyword.trim() !== "") {
+      const filtered = productsList.filter(
+        (product) =>
+          product.name &&
+          product.name.toLowerCase().includes(searchKeyword.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+    } else {
+      setFilteredProducts(productsList);
+    }
+  }, [searchKeyword, productsList]);
+
+  const productItems = () => {
+    return productType === null
+      ? filteredProducts
+      : filteredProducts.filter((product) => product.type === productType);
+  };
+
+	// const productItems = () => {
+	// 	return productType == null
+	// 		? productsList
+	// 		: productsList.filter((product) => product.type == productType);
+	// };
 
 	return (
 <>
