@@ -33,7 +33,7 @@
   color: #ffb524;
 }
 .main-hero-container{
-  background-image:url(../images/hero-img.jpg);
+  /* background-image:url(../images/hero-img.jpg); */
   background-repeat:no-repeat;
   background-size: cover;
   background-position: center;
