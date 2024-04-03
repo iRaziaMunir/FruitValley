@@ -11,7 +11,7 @@ const FilterSection = ({searchKeyword, handleSearchInputChange}) => {
               value={searchKeyword}
               onChange={handleSearchInputChange}
                />
-              <button onClick={handleSearchInputChange} className=' md:mx-0 px-2 rounded-md text-center w-[50px]'><IoSearch className=' text-slate-500 text-xl' /></button>
+              <button  className=' md:mx-0 px-2 rounded-md text-center w-[50px]'><IoSearch className=' text-slate-500 text-xl' /></button>
             </div>
             {/* <div className='select-container bg-[#fff]  py-3 rounded-md border-1 flex'>
               <select class=" px-4 mr-5 text-gray-700 bg-white rounded-md w-52 focus:outline-none focus:ring-primary-500 focus:border-primary-500">
