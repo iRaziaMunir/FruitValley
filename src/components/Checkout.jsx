@@ -126,8 +126,11 @@ const Checkout = () => {
   return (
     <>
       <div className=' bg-white pb-10 pt-40'>
-        <div className='flex lg:flex-row flex-col items-start'>
+      <div className='flex lg:flex-row flex-col items-start'>
       <div className="mx-auto w-[30%] mt-40 max-w-[700px]">
+      <div className=" py-4 mb-5 bg-slate-100 text-center">
+      <span className="text-2xl text-[#45595b]">Shipping Address</span>
+     </div>
       <form onSubmit={handleSubmit } method="POST">
       <div className="mb-5">
         <label
@@ -180,7 +183,7 @@ const Checkout = () => {
           className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         />
       </div>
-      <div className="mb-5">
+      {/* <div className="mb-5">
         <label
           for="city"
           className="mb-3 block text-base font-medium text-[#07074D]"
@@ -196,7 +199,7 @@ const Checkout = () => {
           required
           className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         />
-      </div>
+      </div> */}
       <div className="mb-5">
         <label
           for="zipCode"
@@ -232,7 +235,9 @@ const Checkout = () => {
           className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         />
       </div>
-     
+     <div className=" py-4 mb-5 bg-slate-100 text-center">
+      <span className="text-2xl text-[#45595b]">Payment Method</span>
+     </div>
       <div className="mb-5">
       <input className='mr-4'
         type="checkbox"
