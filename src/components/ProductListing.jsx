@@ -1,33 +1,57 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProducts, setProductType, setFilteredProducts } from "../features/product/productListingSlice";
 import ProductItem from "./ProductItem";
 
 const ProductListing = ({searchKeyword}) => {
 
-	const [productType, setProductType] = useState(null);
-	const [productsList, setProductsList] = useState([]);
-	const [filteredProducts, setFilteredProducts] = useState([]);
+	// const [productType, setProductType] = useState(null);
+	// const [productsList, setProductsList] = useState([]);
+	// const [filteredProducts, setFilteredProducts] = useState([]);
+
+	const dispatch = useDispatch();
+	const productType = useSelector((state) => state.productListing.productType)
+	const productList = useSelector((state) => state.productListing.productList);
+	const filteredProducts = useSelector((state) => state.productListing.filteredProducts)
+
+	// useEffect(() => {
+	// 	fetch("http://localhost:3000/products?_page=1")
+	// 	.then((response) => response.json())
+	// 	.then((json) => {
+	// 		setProductsList(json.data);
+	// 	})
+	// 	.catch((error) => { console.error("Error fetching data:", error); });
+	// }, []);
 
 	useEffect(() => {
-		fetch("http://localhost:3000/products?_page=1")
-		.then((response) => response.json())
-		.then((json) => {
-			setProductsList(json.data);
-		})
-		.catch((error) => { console.error("Error fetching data:", error); });
-	}, []);
+		dispatch(fetchProducts)
+	}, [dispatch]);
+
+	// useEffect(() => {
+  //   if (searchKeyword && searchKeyword.trim() !== "") {
+  //     const filtered = productsList.filter(
+  //       (product) =>
+  //         product.name &&
+  //         product.name.toLowerCase().includes(searchKeyword.toLowerCase())
+  //     );
+  //     setFilteredProducts(filtered);
+  //   } else {
+  //     setFilteredProducts(productsList);
+  //   }
+  // }, [searchKeyword, productsList]);
 
 	useEffect(() => {
-    if (searchKeyword && searchKeyword.trim() !== "") {
-      const filtered = productsList.filter(
-        (product) =>
-          product.name &&
-          product.name.toLowerCase().includes(searchKeyword.toLowerCase())
-      );
-      setFilteredProducts(filtered);
-    } else {
-      setFilteredProducts(productsList);
-    }
-  }, [searchKeyword, productsList]);
+		if (searchKeyword && searchKeyword.trim() !== "") {
+			const filtered = productList.filter(
+				(product) =>
+					product.name &&
+					product.name.toLowerCase().includes(searchKeyword.toLowerCase())
+			);
+			dispatch(setFilteredProducts(filtered)); // Dispatch action to update filtered products in the Redux store
+		} else {
+			dispatch(setFilteredProducts(productList)); // Dispatch action to update filtered products with the original list in the Redux store
+		}
+	}, [searchKeyword, productList, dispatch]);
 
   const productItems = () => {
     return productType === null
