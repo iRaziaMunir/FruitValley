@@ -5,6 +5,82 @@ import { Link, NavLink } from "react-router-dom";
 const Checkout = () => {
 
   const [items, setItems] = useState([]);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    address: '',
+    city: '',
+    zipCode: '',
+    mobile: '',
+    cashOnDelivery :false,
+  });
+  const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+    setFormData({
+      ...formData,
+      [name]: newValue,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Check if any field is empty
+  const emptyFields = Object.entries(formData).filter(([key, value]) => {
+    return value === '' && key !== 'cashOnDelivery'; // Exclude checkbox from empty check
+  });
+
+    // Perform validation
+    const newErrors = {};
+    if (!formData.name) {
+      newErrors.name = 'Name is required';
+    }
+    if (!formData.email) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Email is invalid';
+    }
+    if (!formData.address) {
+      newErrors.address = 'Address is required';
+    }
+    if (!formData.city) {
+      newErrors.city = 'City is required';
+    }
+    if (!formData.zipCode) {
+      newErrors.zipCode = 'Zip Code is required';
+    }
+    if (!formData.mobile) {
+      newErrors.mobile = 'Mobile is required';
+    }
+    if (!formData.cashOnDelivery) {
+      newErrors.cashOnDelivery = 'required';
+    }
+    setErrors(newErrors);
+
+    
+  // If there are no errors, place the order
+  if (Object.keys(newErrors).length === 0) {
+    setSuccessMessage("Order placed successfully!");
+    // Reset form data and clear success message after 2 seconds
+    setTimeout(() => {
+      setFormData({
+        name: "",
+        email: "",
+        address: "",
+        city: "",
+        zipCode: "",
+        mobile: "",
+        cashOnDelivery: false,
+      });
+      setErrors({});
+      setSuccessMessage("");
+    }, 2000);
+  }
+};
+
 	useEffect(() => {
 		fetch("http://localhost:3000/cart?_embed=product")
 		.then((response) => response.json())
@@ -50,9 +126,12 @@ const Checkout = () => {
   return (
     <>
       <div className=' bg-white pb-10 pt-40'>
-        <div className='flex lg:flex-row flex-col items-start'>
-      <div className="mx-auto w-full mt-40 max-w-[550px]">
-      <form action="https://formspree.io/f/mleqwjwb" method="POST">
+      <div className='flex lg:flex-row flex-col items-start'>
+      <div className="mx-auto w-[30%] mt-40 max-w-[700px]">
+      <div className=" py-4 mb-5 bg-slate-100 text-center">
+      <span className="text-2xl text-[#45595b]">Shipping Address</span>
+     </div>
+      <form onSubmit={handleSubmit } method="POST">
       <div className="mb-5">
         <label
           for="name"
@@ -65,6 +144,7 @@ const Checkout = () => {
           name="name"
           id="name"
           placeholder="Full Name"
+          onChange={handleChange}
           required
           className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         />
@@ -81,6 +161,7 @@ const Checkout = () => {
           name="email"
           id="email"
           placeholder="example@domain.com"
+          onChange={handleChange}
           required
           className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         />
@@ -97,11 +178,12 @@ const Checkout = () => {
           name="address"
           id="address"
           placeholder="Address"
+          onChange={handleChange}
           required
           className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         />
       </div>
-      <div className="mb-5">
+      {/* <div className="mb-5">
         <label
           for="city"
           className="mb-3 block text-base font-medium text-[#07074D]"
@@ -113,10 +195,11 @@ const Checkout = () => {
           name="city"
           id="city"
           placeholder="City/Town"
+          onChange={handleChange}
           required
           className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         />
-      </div>
+      </div> */}
       <div className="mb-5">
         <label
           for="zipCode"
@@ -129,6 +212,7 @@ const Checkout = () => {
           name="zipCode"
           id="zipCode"
           placeholder="ZipCode"
+          onChange={handleChange}
           required
           className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         />
@@ -141,18 +225,27 @@ const Checkout = () => {
           Mobile*
         </label>
         <input
-          type="Number"
+          type="tel"
           name="mobile"
           id="mobile"
           placeholder="Mobile"
+          
+          onChange={handleChange}
           required
           className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         />
       </div>
-     
+     <div className=" py-4 mb-5 bg-slate-100 text-center">
+      <span className="text-2xl text-[#45595b]">Payment Method</span>
+     </div>
       <div className="mb-5">
-      <input className='mr-4' type="checkbox" name="cashOnDelivery" id="cashOnDelivery" />
-      <label className="mb-3 text-md font-medium text-[#07074D]"  for="cashOnDelivery">Cash On Delivery</label>
+      <input className='mr-4'
+        type="checkbox"
+        name="cashOnDelivery" 
+        id="cashOnDelivery"
+        onChange={handleChange}
+        required />
+      <label className="mb-3 text-md font-medium text-[#07074D]"  for="cashOnDelivery">Cash On Delivery*</label>
       </div>
       <div className="mb-5">
         <label
@@ -169,15 +262,21 @@ const Checkout = () => {
           className="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         ></textarea>
       </div>
-      
+      {Object.keys(errors).length > 0 && (
+        <p className="text-red-500 text-center">Please fill in all required fields.</p>
+      )}
+      {successMessage &&<p className="text-green-500">{successMessage}</p>}
+      <div className="mb-5">
+        <input type="submit" value="Submit" class=" mr-0 mt-6 w-full rounded-md bg-[#ffb524] py-2 font-medium text-blue-50 hover:bg-slate-500"/>
+      </div>
       <div>
       </div>
     </form>
   </div>
   {/* cart data */}
-  <div className=" py-40  flex flex-col md:flex-row gap-10 md:items-start md:px-20">
-      <div className='w-full '>
-        <table className='w-[100%]'>
+  <div className="w-[60%]  py-40 gap-10 flex flex-col md:flex-row md:items-start md:px-10 ">
+      <div className=''>
+        <table className='w-full'>
           <thead className='text-sm'>
           <tr className='border-b border-black'>
             <th className='py-5 text-left '>Products</th>
@@ -196,7 +295,7 @@ const Checkout = () => {
                   <img className='w-12 h-12 rounded-full' src={"../images/" + item.product.image} alt={item.product.name} />
                 </td>
                 <td className="text-center ">{item.product.name}</td>
-                <td className="text-center ">{'$' + item.product.price} / {item.product.unit}</td>
+                <td className="text-center px-1">{'$' + item.product.price} / {item.product.unit}</td>
                 <td className="text-center ">{item.quantity}</td>
                 <td className="text-center ">{'$' + item.product.price * item.quantity}</td>
                 <td className='text-2xl text-red-500'>
@@ -208,7 +307,7 @@ const Checkout = () => {
         </table>
       </div>
       {/* Sub total */}
-      <div class=" h-full rounded-lg border bg-slate-100 shadow-md md:mt-0 md:w-1/3 p-6">
+      <div class=" rounded-lg border bg-slate-100 shadow-md md:mt-0 md:w-1/3 p-6 ">
         <div className='text-center py-2'>
           <h2 className="text-4xl font-medium text-[#45595b]">Sub Total</h2>
         </div>
@@ -221,96 +320,13 @@ const Checkout = () => {
           <p class="text-gray-700">{'$' + shippingCharges}</p>
         </div>
         <hr class="my-4" />
-        <div class="flex justify-between">
-          <p class="text-lg font-bold">Total</p>
+        <div class="flex">
+          <p class="text-lg font-bold">Total:</p>
           <div class="">
-            <p class="mb-1 text-lg font-bold">${subTotal + shippingCharges}</p>
-            <p class="text-sm text-gray-700">including VAT</p>
-      {/* <div className=' bg-gray-100 px-40 py-10'>
-        <h2 className=" text-[#45595b] text-5xl font-semibold">Billing details</h2>
-        <div className='checkout_inner flex items-start'>
-          <div className=" form_container mx-auto w-full max-w-[550px] mt-[150px]">
-          <form action="https://formspree.io/f/mleqwjwb" method="POST">
-            <div className="mb-5">
-              <label
-                for="name"
-                className="mb-3 block text-base font-medium text-[#07074D]"
-              >
-                Full Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Full Name"
-                required
-                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              />
-            </div>
-            <div className="mb-5">
-              <label
-                for="email"
-                className="mb-3 block text-base font-medium text-[#07074D]"
-              >
-                Email Address
-              </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="example@domain.com"
-                required
-                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              />
-            </div>
-            <div className="mb-5">
-              <label
-                for="subject"
-                className="mb-3 block text-base font-medium text-[#07074D]"
-              >
-                Subject
-              </label>
-              <input
-                type="text"
-                name="subject"
-                id="subject"
-                placeholder="Enter your subject"
-                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              />
-            </div>
-            <div className="mb-5">
-              <label
-                for="message"
-                className="mb-3 block text-base font-medium text-[#07074D]"
-              >
-                Message
-              </label>
-              <textarea
-                rows="4"
-                name="message"
-                id="message"
-                placeholder="Type your message"
-                required
-                className="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              ></textarea>
-            </div>
-            <div>
-              <button
-                className="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
-        </div>
-        <NavLink to={'/checkout'}>
-        <button class="mt-6 w-full rounded-md bg-[#ffb524] py-1.5 font-medium text-blue-50 hover:bg-slate-500" onClick={() => checkout()}> Place Order</button>
-        </NavLink>
-        <NavLink to={'/store'}>
-        <button class="mt-6 w-full rounded-md bg-[#81c408] py-1.5 font-medium text-blue-50 hover:bg-slate-500"> Continue Shopping </button>
-        </NavLink>
-      </div> */}
+            <p class="mb-1 text-lg font-bold text-end">${subTotal + shippingCharges}</p>
+          <NavLink to={'/store'}>
+          <button class="mt-6 w-full rounded-md bg-[#81c408] py-2 px-10 text-nowrap font-medium text-blue-50 hover:bg-slate-500"> Continue Shopping </button>
+          </NavLink> 
     </div>
   </div>
   </div>
