@@ -1,36 +1,40 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import { MdDelete } from "react-icons/md";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { addItemToCart, removeItemFromCart } from "../features/cart/cartSlice"
 import Navbar from "./Navbar";
 
 const Cart = () => {
 
-  const [items, setItems] = useState([]);
-   var cartItems = items.length;
-  console.log(cartItems, "items")
-	useEffect(() => {
-		fetch("http://localhost:3000/cart?_embed=product")
-		.then((response) => response.json())
-		.then((data) => setItems(data))
-		.catch((error) => { console.error("Error fetching data:", error); });
-	}, []);
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  // const [items, setItems] = useState([]);
+  //  var cartItems = items.length;
+  // console.log(cartItems, "items")
+	// useEffect(() => {
+	// 	fetch("http://localhost:3000/cart?_embed=product")
+	// 	.then((response) => response.json())
+	// 	.then((data) => setItems(data))
+	// 	.catch((error) => { console.error("Error fetching data:", error); });
+	// }, []);
 
-  const removeItem = (item) =>
-  {
-    let payload =
-    {
-      method: 'DELETE',
-    };
+  // const removeItem = (item) =>
+  // {
+  //   let payload =
+  //   {
+  //     method: 'DELETE',
+  //   };
 
-    fetch('http://localhost:3000/cart/' + item.id, payload)
-    .then((response) => response.json())
-    .then((json) => {
-      //  alert(`Removed ${item.product.name} from cart`);
-       })
-    .catch(error => { alert('Error removing product from cart: ' + error); });
+  //   fetch('http://localhost:3000/cart/' + item.id, payload)
+  //   .then((response) => response.json())
+  //   .then((json) => {
+  //     //  alert(`Removed ${item.product.name} from cart`);
+  //      })
+  //   .catch(error => { alert('Error removing product from cart: ' + error); });
 
-    setItems(prevItems => prevItems.filter(prevItem => prevItem.id != item.id));
-  };
+  //   setItems(prevItems => prevItems.filter(prevItem => prevItem.id != item.id));
+  // };
 
   // const checkout = () =>
   // {
@@ -51,11 +55,11 @@ const Cart = () => {
   // };
 
   const shippingCharges = 4.99;
-  const subTotal = items.reduce((total, item) => total + (item.quantity * item.product.price), 0);
+  const subTotal = cartItems.reduce((total, item) => total + (item.quantity * item.product.price), 0);
 
   return (
     <>
-    <Navbar cartItems = {cartItems} />
+    {/* <Navbar cartItems = {cartItems} /> */}
     <div className=" py-40  flex flex-col gap-10 md:flex-row md:items-start md:px-20">
       <div className='w-full '>
         <table className='w-[100%]'>
@@ -71,7 +75,7 @@ const Cart = () => {
           </thead>
           <tbody>
           
-            {items.map((item, index) => (
+            {cartItems.map((item, index) => (
               
               <>
               <tr className='border-b border-slate-100' key={item.id}>
