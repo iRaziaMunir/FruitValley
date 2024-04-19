@@ -13,7 +13,6 @@ const ProductListing = ({searchKeyword}) => {
 	const productType = useSelector((state) => state.productListing.productType)
 	const productList = useSelector((state) => state.productListing.productList);
 	const filteredProducts = useSelector((state) => state.productListing.filteredProducts)
-
 	// useEffect(() => {
 	// 	fetch("http://localhost:3000/products?_page=1")
 	// 	.then((response) => response.json())
@@ -24,7 +23,7 @@ const ProductListing = ({searchKeyword}) => {
 	// }, []);
 
 	useEffect(() => {
-		dispatch(fetchProducts)
+		dispatch(fetchProducts())
 	}, [dispatch]);
 
 	// useEffect(() => {
@@ -55,8 +54,8 @@ const ProductListing = ({searchKeyword}) => {
 
   const productItems = () => {
     return productType === null
-      ? filteredProducts
-      : filteredProducts.filter((product) => product.type === productType);
+      ? filteredProducts 
+      : filteredProducts .filter((product) => product.type === productType);
   };
 
 	// const productItems = () => {
@@ -82,7 +81,7 @@ const ProductListing = ({searchKeyword}) => {
 							? "bg-[#ffb524] text-white"
 							: ""
 					}`}
-					onClick={() => setProductType(null)}
+					onClick={() => dispatch(setProductType(null))}
 				>
 					All
 				</button>
@@ -93,14 +92,14 @@ const ProductListing = ({searchKeyword}) => {
 				? "bg-[#ffb524] text-white"
 				: ""
 		}`}
-					onClick={() => setProductType("vegetable")}
+					onClick={() => dispatch(setProductType("vegetable"))}
 				>
 					Vegetables
 				</button>
 				<button
 					className={`px-4 py-2 bg-[#f2f4f6]  text-grey-800 text-semibold  rounded-md pointer transition transform ease-in duration-300
 						${productType == "fruit" ? "bg-[#ffb524] text-white" : ""}`}
-					onClick={() => setProductType("fruit")}
+					onClick={() => dispatch(setProductType("fruit"))}
 				>
 					Fruits
 				</button>

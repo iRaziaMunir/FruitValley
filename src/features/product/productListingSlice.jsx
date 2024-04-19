@@ -9,20 +9,16 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
   status: "idle",
   error: null,
 };
-
 //create async thunk for fetching products
 
 export const fetchProducts = createAsyncThunk(
   "productListing/fetchProducts",
   async () => {
-    const response = await fetch("http://localhost:3000/products");
-    
-    console.log(response, "fetching products");
+    const response = await fetch("http://localhost:3000/products?_page=1");
     return response.json();
     
   }
 );
-
 // Define product listing slice
  const productListingSlice = createSlice(
   {
