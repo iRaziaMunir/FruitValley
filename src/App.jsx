@@ -20,7 +20,7 @@ const App = () => {
 			
 			<Navbar sendDataToApp = {receiveDataFromCart}/>
 			{/* <Header /> */}
-			<Link to="https://wa.me/03097949844">
+			<Link to="https://wa.me/923097949844?text=Hello,Can I get more info?" target="_blank">
 			<div className="w-20 h-20"><ImWhatsapp className=" w-16 h-16 fixed bottom-10 left-10 text-green-500 z-1"></ImWhatsapp></div>
 			</Link>
 			<Routing />
