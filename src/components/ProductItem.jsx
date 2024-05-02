@@ -13,21 +13,6 @@ const ProductItem = ({item}) => {
     dispatch(addItemToCart(item)); // Dispatch addItemToCart action with item payload
     // alert(`Added ${item.name} to cart`);
   };
-  // const addToCart = () =>
-  // {
-  //   let payload =
-  //   {
-  //     method: 'POST',
-  //     headers: {'Content-Type': 'application/json'},
-  //     body: JSON.stringify({ productId: item.id, quantity: 1 })
-  //   };
-
-  //   fetch('http://localhost:3000/cart', payload)
-  //   .then((response) => response.json())
-  //   .then((json) => { alert(`Added ${item.name} to cart`); })
-  //   .catch(error => { alert('Error adding product to cart: ' + error); });
-  // };
-
   return (
   <>
     <div className='product-container w-[330px] h-[420px] rounded-[10px] border-top-0 border-1 border-[#ffb524] hover:shadow-2xl hover:shadow-slate-600/50 '>

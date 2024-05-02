@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { MdDelete } from "react-icons/md";
 import { NavLink } from "react-router-dom";
-import { addItemToCart, removeItemFromCart } from "../features/cart/cartSlice"
-import Navbar from "./Navbar";
+import { removeItemFromCart } from "../features/cart/cartSlice"
 
 const Cart = () => {
-
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
+
+  const removeItem = (item) =>{
+    dispatch(removeItemFromCart(item));
+    // alert(`Removed ${item.name} from cart`);
+  }
   // const [items, setItems] = useState([]);
   //  var cartItems = items.length;
   // console.log(cartItems, "items")
@@ -55,17 +57,16 @@ const Cart = () => {
   // };
 
   const shippingCharges = 4.99;
-  const subTotal = cartItems.reduce((total, item) => total + (item.quantity * item.price), 0);
+  const subTotal = cartItems.reduce((total, item) => total + (item.quantityInStock * item.price), 0);
 
   return (
     <>
-    {/* <Navbar cartItems = {cartItems} /> */}
-    <div className=" py-40  flex flex-col gap-10 md:flex-row md:items-start md:px-20">
+    <div className="py-10 flex flex-col gap-10 lg:flex-row md:items-start md:px-20 bg-[#F3F4F6]">
       <div className='w-full '>
         <table className='w-[100%]'>
-          <thead className='text-xl'>
-          <tr className='border-b border-black'>
-            <th className='py-5 text-left '>Products</th>
+          <thead className='md:text-xl text-sm'>
+          <tr className=' bg-slate-300'>
+            <th className='py-5 pl-10 text-left '>Products</th>
             <th className='py-5 text-left '>Name</th>
             <th className='py-5 text-left '>Price</th>
             <th className='py-5 text-left '>Quantity</th>
@@ -73,19 +74,20 @@ const Cart = () => {
             <th className='py-5 text-left '>Handle</th>
           </tr>
           </thead>
-          <tbody>
+          <tbody className=' bg-slate-200'>
           
-            {cartItems?.map((item, index) => (
+            {cartItems?.map((item) => (
               
               <>
-              <tr className='border-b border-slate-100' key={item.id}>
-                <td className='py-5'>
+              <tr className='border-b border-slate-100 text-xm' key={item.id}>
+                <td className='py-5 pl-10'>
                   <img className='w-20 h-20 rounded-full' src={"../images/" + item.image} alt={item.name} />
                 </td>
                 <td>{item.name}</td>
-                {/* <td>{'$' + item.product.price} / {item.product.unit}</td> */}
-                <td className="pl-5">{item.quantity}</td>
-                <td>{'$' + item.price * item.quantity}</td>
+                <td>{'$' + item.price} / {item.unit}</td>
+                <td className="pl-5">{item.quantityInStock}</td>
+                <td>{'$' + item.price * item.quantityInStock}</td>
+                {console.log(item.quantityInStock, "quantityInStock")}
                 <td className='text-2xl text-red-500'>
                   <button onClick={() => removeItem(item)}><MdDelete className='ml-10'/></button>
                 </td>
@@ -102,7 +104,7 @@ const Cart = () => {
         </div>
         <div className="mb-2 flex justify-between">
           <p className="text-gray-700">Subtotal</p>
-          {/* <p className="text-gray-700">{'$' + subTotal}</p> */}
+          <p className="text-gray-700">{'$' + subTotal}</p>
         </div>
         <div className="flex justify-between">
           <p className="text-gray-700">Shipping</p>

@@ -180,8 +180,6 @@ const Navbar = () => {
     { id: 2, text: 'Store', path: '/store'},
     { id: 3, text: 'CheckOut' , path: '/checkout'},
     { id: 4, text: 'Contact' , path: '/contact'},
-    // { id: 5, text: <FaShoppingBag /> , path: '/cart'},
-    // { id: 6, text: < IoSearch/> , path: '/cart'}
   ];
 
   return (
@@ -290,7 +288,8 @@ const Navbar = () => {
         to='/cart'>
         <FaShoppingBag />
         </NavLink>
-        {cartItems > 0 ?<span className='bg-[#ffb524] text-white text-sm w-8 h-8 flex items-center justify-center rounded-full absolute top-3 right-[23%]'>{cartItems}</span> : "" } 
+        {cartItems.length > 0 ?<span className='bg-[#ffb524] active:bg-[#81c408] text-white text-sm w-8 h-8 flex items-center justify-center rounded-full absolute 
+        top-[40%] right-[80%]'>{cartItems.length}</span> : "" } 
            {/* {isAuthenticated && (user.name || user.email)} */}
 						{isAuthenticated ? (
  							<button
