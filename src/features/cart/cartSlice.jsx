@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const initialState = {
   
-  cartItems:JSON.parse(localStorage.getItem("cartItems")) || [],
+  cartItems:JSON.parse(localStorage.getItem("cartItem")) || [],
   status: "idle",
   error: null,
 }
