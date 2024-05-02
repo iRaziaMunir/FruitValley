@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 const initialState = {
-  cartItems: [],
+  
+  cartItems:JSON.parse(localStorage.getItem("cartItems")) || [],
   status: "idle",
   error: null,
 }
@@ -24,7 +25,10 @@ const cartSlice = createSlice({
   reducers:{
     addItemToCart:(state, action) => {
       state.cartItems.push( action.payload);
+      localStorage.setItem("cartItem", JSON.stringify(state.cartItems));
+     
     },
+
     removeItemFromCart:(state, action) => {
       state.cartItems = state.cartItems.filter((item) => item.id !== action.payload.id);
     },

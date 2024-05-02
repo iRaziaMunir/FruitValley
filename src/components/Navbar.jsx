@@ -160,8 +160,10 @@ import { FaShoppingBag } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { useAuth0 } from "@auth0/auth0-react";
+import { useSelector } from 'react-redux';
 
-const Navbar = ({cartItems}) => {
+const Navbar = () => {
+  const cartItems = useSelector((state) => state.cart.cartItems);
   // Auth0 hook
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   // State to manage the navbar's visibility
@@ -217,7 +219,7 @@ const Navbar = ({cartItems}) => {
         to='/cart'>
         <FaShoppingBag />
         </NavLink>
-        {cartItems > 0 ?<span className='bg-[#ffb524] text-white text-sm w-8 h-8 flex items-center justify-center rounded-full absolute top-3 right-[23%]'>{cartItems}</span> : "" }
+        {cartItems.length > 0 ?<span className='bg-[#ffb524] text-white text-sm w-8 h-8 flex items-center justify-center rounded-full absolute top-3 right-[23%]'>{cartItems.length}</span> : "" }
         
            {/* {isAuthenticated && (user.name || user.email)} */}
 						{isAuthenticated ? (
