@@ -16,7 +16,7 @@ const Header = () => {
 
 	return (
 		<>
-			<div className="main-hero-container py-1 ">
+			<div className="container main-hero-container py-1 ">
 				<div className="main-hero-container relative mt-2 w-full h-screen">
 				{/* <div className='search-container md:w-[500px] w-[250px] bg-slate-100 rounded-md md:mr-0 ml-[10%] mr-[30%] border-1 flex items-center mt-[100px] pointer'>
               <input className=' md:w-[450px] w-[400px] rounded-md rounded-r-none border-1 outline-0 focus:outline-lime-500 focus:outline-1 md:px-10 px-2 py-3 text-black
@@ -38,13 +38,13 @@ const Header = () => {
           <IoSearch className=" text-lime-500 text-xl " />
            </div> */}
 					 
-				<div className="hero-sub-container w-full h-[550px] flex sm:flex-nowrap flex-wrap  lg:gap-0 gap-2 justify-evenly items-center top-[100px] absolute p-12">
+				<div className="hero-sub-container w-full h-[550px] flex md:flex-row flex-col lg:gap-0 gap-2 justify-evenly items-center top-[100px] absolute p-12">
 				
 					<div className="hero-left-container  w-[784px] h-[341px] lg:text-start text-center">
-						<h4 className="text-[24px] text-[#ffb524] font-semibold my-4">
+						<h4 className="md:text-[24px]  text-[#ffb524] font-semibold my-4">
 							Welcome to FruitValley
 						</h4>
-						<h1 className=" text-[#81c408] text-[4rem] font-bold mb-[50px]">
+						<h1 className=" text-[#81c408] md:text-[4rem] text-[2rem] font-bold mb-[50px]">
 							Freshness to your door
 						</h1>
 							<NavLink to={'/store'} className = ''>
@@ -53,7 +53,7 @@ const Header = () => {
 							</button>
 							</ NavLink>
 					</div>
-					<div>
+					<div className=" overflow-visible">
 					<Carousel />
 					</div>
 					</div>
