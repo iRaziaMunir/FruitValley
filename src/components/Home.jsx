@@ -17,7 +17,7 @@ const featuresData =[
   {icon:<MdOutlineRocketLaunch className='text-5xl text-[#fff]'/>, name:'Home Delivery', description:'All over Lahore'},
   {icon:<CiCreditCard1 className='text-5xl text-[#fff]'/>, name:'Cash on delivery', description:'Pay when you get it'},
   // {icon:<FaArrowRightArrowLeft className='text-5xl text-[#fff]'/>, name:'30 Day Return', description:'30 day money guarantee'},
-  {icon:<FaPhone className='text-5xl text-[#fff]'/>, name:'Call Us', description:'03097949844'},
+  {icon:<FaPhone className='text-5xl text-[#fff]'/>, name:'Call Us', description:'03000000000'},
 ];
 
 const Home = () => {

@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 // import { FaChevronLeft } from "react-icons/fa";
 const slides = [
-  {image:"../public/images/hero-img-1.png", type:"Fruit"},
-  {image:"../public/images/hero-img-2.jpg", type:"Vegetable"}
+  {image:"./images/hero-img-1.png", type:"Fruit"},
+  {image:"./images/hero-img-2.jpg", type:"Vegetable"}
 ]
   const Carousel = () => {
     const autoSlide = true;
