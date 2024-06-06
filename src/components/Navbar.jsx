@@ -178,8 +178,7 @@ const Navbar = () => {
   const navItems = [
     { id: 1, text: 'Home', path: '/' },
     { id: 2, text: 'Store', path: '/store'},
-    { id: 3, text: 'CheckOut' , path: '/checkout'},
-    { id: 4, text: 'Contact' , path: '/contact'},
+    { id: 4, text: 'Contact' , path: '/contact'}
   ];
 
   return (
