@@ -12,7 +12,7 @@ const Shop = () => {
   };
   return (
     <>
-      <div className='py-10 px-10'>
+      <div className='px-10'>
         <div className=' shop-inner-container mt-[100px]'>
           {/* <h1 className=" text-[#45595b] text-5xl font-semibold text-center mt-[100px]">Our best products</h1> */}
           <div className='md:mx-0 ml-5'><FilterSection searchKeyword={searchKeyword} handleSearchInputChange = {handleSearchInputChange}/></div>
@@ -25,5 +25,4 @@ const Shop = () => {
     </>
   )
 }
-
 export default Shop;

@@ -7,7 +7,8 @@
       "name": "Oranges",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
       "price": "44",
-      "unit": "kg"
+      "unit": "kg",
+      "quantityInStock": "44"
     },
     {
       "id": 2,
@@ -16,7 +17,8 @@
       "name": "Raspberries",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
       "price": "55",
-      "unit": "kg"
+      "unit": "kg",
+      "quantityInStock": "44"
     },
     {
       "id": 3,
@@ -25,7 +27,8 @@
       "name": "Bananas",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
       "price": "66",
-      "unit": "Dozen"
+      "unit": "Dozen",
+      "quantityInStock": "44"
     },
     {
       "id": 4,
@@ -34,7 +37,8 @@
       "name": "Apricots",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
       "price": "33",
-      "unit": "kg"
+      "unit": "kg",
+      "quantityInStock": "44"
     },
     {
       "id": 5,
@@ -43,14 +47,8 @@
       "name": "Grapes",
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
       "price": "22",
-      "unit": "kg"
-    }
-  ],
-  "cart": [
-    {
-      "id": "d9ad",
-      "productId": 1,
-      "quantity": 1
+      "unit": "kg",
+      "quantityInStock": "44"
     }
   ]
 }

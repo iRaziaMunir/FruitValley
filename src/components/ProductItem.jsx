@@ -1,23 +1,18 @@
 import React from 'react'
-import {Link, NavLink} from "react-router-dom";
 import { FaShoppingBag } from "react-icons/fa";
+import { useDispatch } from 'react-redux';
+import {addItemToCart} from "../features/cart/cartSlice"
+
+
 const ProductItem = ({item}) => {
 
-  const addToCart = () =>
-  {
-    let payload =
-    {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ productId: item.id, quantity: 1 })
-    };
 
-    fetch('http://localhost:3000/cart', payload)
-    .then((response) => response.json())
-    .then((json) => { alert(`Added ${item.name} to cart`); })
-    .catch(error => { alert('Error adding product to cart: ' + error); });
+  const dispatch = useDispatch();
+
+  const addToCart = (item) => {
+    dispatch(addItemToCart(item)); // Dispatch addItemToCart action with item payload
+    // alert(`Added ${item.name} to cart`);
   };
-
   return (
   <>
     <div className='product-container w-[330px] h-[420px] rounded-[10px] border-top-0 border-1 border-[#ffb524] hover:shadow-2xl hover:shadow-slate-600/50 '>
@@ -30,7 +25,7 @@ const ProductItem = ({item}) => {
         <p className='text-center mb-2 mx-4 text-truncate'>{item.description}</p>
         <div className='mx-3 mt-3'>
           <span className='mx-1 text-[#45595b] text-xl font-semibold'>{'$' + item.price} / {item.unit}</span>
-          <button className='relative ml-3 px-5 py-2 border-1 border-[#ffb524] rounded-full font-bold text-[#81c408] hover:text-[#fff]  hover:bg-[#ffb524] active:text-[#fff] active:bg-[#ffb524] transition transform ease-in duration-300' onClick={addToCart}><FaShoppingBag className='absolute left-5 bottom-3 text-[#81c408] hover:text-[#81c408]'/> Add to cart</button>
+          <button className='relative ml-3 px-5 py-2 border-1 border-[#ffb524] rounded-full font-bold text-[#81c408] hover:text-[#fff]  hover:bg-[#ffb524] active:text-[#fff] active:bg-[#ffb524] transition transform ease-in duration-300' onClick={() => addToCart(item)}><FaShoppingBag className='absolute left-5 bottom-3 text-[#81c408] hover:text-[#81c408]'/> Add to cart</button>
         </div>
       </div>
     </div>

@@ -1,10 +1,12 @@
-
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import {useSelector, useDispatch } from 'react-redux';
 import { MdDelete } from "react-icons/md";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { removeItemFromCart } from "../features/cart/cartSlice"
 const Checkout = () => {
 
-  const [items, setItems] = useState([]);
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.cartItems);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -81,55 +83,24 @@ const Checkout = () => {
   }
 };
 
-	useEffect(() => {
-		fetch("http://localhost:3000/cart?_embed=product")
-		.then((response) => response.json())
-		.then((data) => setItems(data))
-		.catch((error) => { console.error("Error fetching data:", error); });
-	}, []);
-
   const removeItem = (item) =>
   {
-    let payload =
-    {
-      method: 'DELETE',
-    };
-
-    fetch('http://localhost:3000/cart/' + item.id, payload)
-    .then((response) => response.json())
-    .then((json) => { alert(`Removed ${item.product.name} from cart`); })
-    .catch(error => { alert('Error removing product from cart: ' + error); });
-
-    setItems(prevItems => prevItems.filter(prevItem => prevItem.id != item.id));
+    dispatch(removeItemFromCart(item));
   };
 
   const checkout = () =>
   {
-    let payload =
-    {
-      method: 'DELETE',
-    };
-
-    items.forEach((item, index) => {
-      fetch('http://localhost:3000/cart/' + item.id, payload)
-      .then((response) => response.json())
-      .catch(error => { alert('Error removing product from cart: ' + error); });
-
-      setItems(prevItems => prevItems.filter(prevItem => prevItem.id != item.id));
-    });
-
-    alert('Order placed');
   };
 
   const shippingCharges = 4.99;
-  const subTotal = items.reduce((total, item) => total + (item.quantity * item.product.price), 0);
+  const subTotal = cartItems.reduce((total, item) => total + (item.quantityInStock * item.price), 0);
   return (
     <>
-      <div className=' bg-white pb-10 pt-40'>
-      <div className='flex lg:flex-row flex-col items-start'>
-      <div className="mx-auto w-[30%] mt-40 max-w-[700px]">
-      <div className=" py-4 mb-5 bg-slate-100 text-center">
-      <span className="text-2xl text-[#45595b]">Shipping Address</span>
+      <div className='bg-[#F3F4F6] pb-10 flex lg:flex-row flex-col'>
+      {/* <div className='flex lg:flex-row flex-col items-start '> */}
+      <div className="mx-auto md:w-[30%] w-100 mt-40 max-w-[700px]">
+      <div className=" py-4 mb-5 text-center bg-[#81c408]">
+      <span className="text-2xl text-[#ffffff]">Shipping Address</span>
      </div>
       <form onSubmit={handleSubmit } method="POST">
       <div className="mb-5">
@@ -235,8 +206,8 @@ const Checkout = () => {
           className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         />
       </div>
-     <div className=" py-4 mb-5 bg-slate-100 text-center">
-      <span className="text-2xl text-[#45595b]">Payment Method</span>
+     <div className=" py-4 mb-5 bg-[#81c408] text-center">
+      <span className="text-2xl text-[#feffff]">Payment Method</span>
      </div>
       <div className="mb-5">
       <input className='mr-4'
@@ -245,7 +216,7 @@ const Checkout = () => {
         id="cashOnDelivery"
         onChange={handleChange}
         required />
-      <label className="mb-3 text-md font-medium text-[#07074D]"  for="cashOnDelivery">Cash On Delivery*</label>
+      <label className="mb-3 text-md font-medium text-[#07074D]"  for="cashOnDelivery">Cash On Delivery</label>
       </div>
       <div className="mb-5">
         <label
@@ -274,40 +245,40 @@ const Checkout = () => {
     </form>
   </div>
   {/* cart data */}
-  <div className="w-[60%]  py-40 gap-10 flex flex-col md:flex-row md:items-start md:px-10 ">
-      <div className=''>
-        <table className='w-full'>
-          <thead className='text-sm'>
-          <tr className='border-b border-black'>
-            <th className='py-5 text-left '>Products</th>
-            <th className='py-5 text-left '>Name</th>
-            <th className='py-5 text-left '>Price</th>
-            <th className='py-5 text-left '>Quantity</th>
-            <th className='py-5 text-left '>Total</th>
-            <th className='py-5 text-left '>Handle</th>
+  <div className="w-[60%] mt-40 bg-neutral-100 ">
+        <table className='w-full '>
+          <thead className='text-sm px-10 bg-slate-300'>
+          <tr className=''>
+            <th className='px-4 py-2 text-left '>Products</th>
+            <th className='px-4 py-2 text-center'>Name</th>
+            <th className='px-4 py-2 text-center'>Price</th>
+            <th className='px-4 py-2 text-center'>Quantity</th>
+            <th className='px-4 py-2 text-center'>Total</th>
+            <th className='px-4 py-2 text-center'>Handle</th>
           </tr>
+          
           </thead>
-          <tbody>
-            {items.map((item, index) => (
+          
+          <tbody className="bg-slate-200">
+            {cartItems.map((item, index) => (
               
-              <tr className='border-b border-slate-100' key={item.id}>
-                <td className='py-3'>
-                  <img className='w-12 h-12 rounded-full' src={"../images/" + item.product.image} alt={item.product.name} />
+              <tr className='' key={item.id}>
+                <td className='px-4 py-3 pl-20'>
+                  <img className='w-12 h-12 rounded-full ' src={"../images/" + item.image} alt={item.name} />
                 </td>
-                <td className="text-center ">{item.product.name}</td>
-                <td className="text-center px-1">{'$' + item.product.price} / {item.product.unit}</td>
-                <td className="text-center ">{item.quantity}</td>
-                <td className="text-center ">{'$' + item.product.price * item.quantity}</td>
-                <td className='text-2xl text-red-500'>
+                <td className="px-4 py-3 text-center ">{item.name}</td>
+                <td className="px-4 py-3 text-center  ">{'$' + item.price} / {item.unit}</td>
+                <td className="px-4 py-3 text-center ">{item.quantityInStock}</td>
+                <td className="px-4 py-3 text-center ">{'$' + item.price * item.quantityInStock}</td>
+                <td className='px-4 py-3 text-center text-2xl text-red-500'>
                   <button onClick={() => removeItem(item)}><MdDelete className='ml-10'/></button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-      </div>
       {/* Sub total */}
-      <div class=" rounded-lg border bg-slate-100 shadow-md md:mt-0 md:w-1/3 p-6 ">
+      <div class="  rounded-lg border bg-slate-100 shadow-md md:mt-0 md:w-1/3 p-6 ">
         <div className='text-center py-2'>
           <h2 className="text-4xl font-medium text-[#45595b]">Sub Total</h2>
         </div>
@@ -332,7 +303,7 @@ const Checkout = () => {
   </div>
   </div>
   </div>
-  </div>
+  
 </>
   )
 }

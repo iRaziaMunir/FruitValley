@@ -1,38 +1,61 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProducts, setProductType, setFilteredProducts } from "../features/product/productListingSlice";
 import ProductItem from "./ProductItem";
 
 const ProductListing = ({searchKeyword}) => {
 
-	const [productType, setProductType] = useState(null);
-	const [productsList, setProductsList] = useState([]);
-	const [filteredProducts, setFilteredProducts] = useState([]);
+	// const [productType, setProductType] = useState(null);
+	// const [productsList, setProductsList] = useState([]);
+	// const [filteredProducts, setFilteredProducts] = useState([]);
+
+	const dispatch = useDispatch();
+	const productType = useSelector((state) => state.productListing.productType)
+	const productList = useSelector((state) => state.productListing.productList);
+	const filteredProducts = useSelector((state) => state.productListing.filteredProducts)
+	// useEffect(() => {
+	// 	fetch("http://localhost:3000/products?_page=1")
+	// 	.then((response) => response.json())
+	// 	.then((json) => {
+	// 		setProductsList(json.data);
+	// 	})
+	// 	.catch((error) => { console.error("Error fetching data:", error); });
+	// }, []);
 
 	useEffect(() => {
-		fetch("http://localhost:3000/products?_page=1")
-		.then((response) => response.json())
-		.then((json) => {
-			setProductsList(json.data);
-		})
-		.catch((error) => { console.error("Error fetching data:", error); });
-	}, []);
+		dispatch(fetchProducts())
+	}, [dispatch]);
+
+	// useEffect(() => {
+  //   if (searchKeyword && searchKeyword.trim() !== "") {
+  //     const filtered = productsList.filter(
+  //       (product) =>
+  //         product.name &&
+  //         product.name.toLowerCase().includes(searchKeyword.toLowerCase())
+  //     );
+  //     setFilteredProducts(filtered);
+  //   } else {
+  //     setFilteredProducts(productsList);
+  //   }
+  // }, [searchKeyword, productsList]);
 
 	useEffect(() => {
-    if (searchKeyword && searchKeyword.trim() !== "") {
-      const filtered = productsList.filter(
-        (product) =>
-          product.name &&
-          product.name.toLowerCase().includes(searchKeyword.toLowerCase())
-      );
-      setFilteredProducts(filtered);
-    } else {
-      setFilteredProducts(productsList);
-    }
-  }, [searchKeyword, productsList]);
+		if (searchKeyword && searchKeyword.trim() !== "") {
+			const filtered = productList.filter(
+				(product) =>
+					product.name &&
+					product.name.toLowerCase().includes(searchKeyword.toLowerCase())
+			);
+			dispatch(setFilteredProducts(filtered)); // Dispatch action to update filtered products in the Redux store
+		} else {
+			dispatch(setFilteredProducts(productList)); // Dispatch action to update filtered products with the original list in the Redux store
+		}
+	}, [searchKeyword, productList, dispatch]);
 
   const productItems = () => {
     return productType === null
-      ? filteredProducts
-      : filteredProducts.filter((product) => product.type === productType);
+      ? filteredProducts 
+      : filteredProducts .filter((product) => product.type === productType);
   };
 
 	// const productItems = () => {
@@ -58,7 +81,7 @@ const ProductListing = ({searchKeyword}) => {
 							? "bg-[#ffb524] text-white"
 							: ""
 					}`}
-					onClick={() => setProductType(null)}
+					onClick={() => dispatch(setProductType(null))}
 				>
 					All
 				</button>
@@ -69,14 +92,14 @@ const ProductListing = ({searchKeyword}) => {
 				? "bg-[#ffb524] text-white"
 				: ""
 		}`}
-					onClick={() => setProductType("vegetable")}
+					onClick={() => dispatch(setProductType("vegetable"))}
 				>
 					Vegetables
 				</button>
 				<button
 					className={`px-4 py-2 bg-[#f2f4f6]  text-grey-800 text-semibold  rounded-md pointer transition transform ease-in duration-300
 						${productType == "fruit" ? "bg-[#ffb524] text-white" : ""}`}
-					onClick={() => setProductType("fruit")}
+					onClick={() => dispatch(setProductType("fruit"))}
 				>
 					Fruits
 				</button>
